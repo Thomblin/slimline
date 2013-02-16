@@ -13,7 +13,6 @@ slimline shall be a small lightweight framework with
 - unit tests
 
 TODO:
-- add first version of slimline
 - add example
 - db access
 - observer pattern
