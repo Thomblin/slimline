@@ -3,6 +3,10 @@ namespace de\detert\sebastian\slimline;
 use de\detert\sebastian\slimline\Exception as Exception;
 use de\detert\sebastian\slimline\Exception\Handler as ExceptionHandler;
 
+require_once 'pool.php';
+require_once 'config.php';
+require_once 'factory.php';
+
 /**
  * this controller is used to handle the whole application execution
  * it contains an config interpreter, autoloader, renderer and error handling
@@ -15,21 +19,13 @@ use de\detert\sebastian\slimline\Exception\Handler as ExceptionHandler;
 class Controller
 {
     /**
-     * @var Request
+     * @var Pool
      */
-    private $request;
+    private $pool;
     /**
      * @var Response
      */
     private $response;
-    /**
-     * @var Config
-     */
-    private $config;
-    /**
-     * @var Factory
-     */
-    private $factory;
 
     /**
      * @param Config $config
@@ -37,10 +33,11 @@ class Controller
      */
     public function __construct(Config $config, Factory $factory)
     {
-        $this->config = $config;
-        $this->factory = $factory;
+        $config->includes['de\detert\sebastian\slimline'] = realpath(__DIR__);
 
-        $this->config->includes['de\detert\sebastian\slimline'] = realpath(__DIR__);
+        $this->pool = $factory->create('de\detert\sebastian\slimline\Pool');
+        $this->pool->config = $config;
+        $this->pool->factory = $factory;
 
         spl_autoload_register(array($this, 'simpleAutoload'));
     }
@@ -52,7 +49,7 @@ class Controller
     {
         $className = strtolower($className);
 
-        foreach ($this->config->includes as $namespace => $docroot) {
+        foreach ($this->pool->config->includes as $namespace => $docroot) {
             $path = $className;
             if ($namespace === substr($path, 0, strlen($namespace))) {
                 $path = substr($path, strlen($namespace) + 1);
@@ -81,7 +78,7 @@ class Controller
             print_r($e->getMessage());
 
             $this->response->exception = $e;
-            $this->render($this->config->renderError);
+            $this->render($this->pool->config->renderError);
         }
 
     }
@@ -92,13 +89,13 @@ class Controller
     private function setHandlers()
     {
         /** @var $exceptionHandler ExceptionHandler */
-        $exceptionHandler = $this->factory->create($this->config->exceptionHandler);
+        $exceptionHandler = $this->pool->factory->create($this->pool->config->exceptionHandler);
 
-        if ($this->config->setAssertHandler) {
+        if ($this->pool->config->setAssertHandler) {
             $exceptionHandler->addAssertHandler();
         }
 
-        if ($this->config->setErrorHandler) {
+        if ($this->pool->config->setErrorHandler) {
             $exceptionHandler->addErrorHandler();
         }
     }
@@ -108,7 +105,7 @@ class Controller
      */
     private function setRequest()
     {
-        $this->request = $this->factory->create('de\detert\sebastian\slimline\Request');
+        $this->pool->request = $this->pool->factory->create('de\detert\sebastian\slimline\Request');
     }
 
     /**
@@ -116,16 +113,21 @@ class Controller
      */
     private function setResponse(array $callbacks)
     {
-        $this->response = $this->factory->create('de\detert\sebastian\slimline\Response');
+        $this->response = $this->pool->factory->create('de\detert\sebastian\slimline\Response');
 
         foreach ($callbacks as $responseName => $callback) {
-            $this->response->$responseName = $this->factory->create('de\detert\sebastian\slimline\Response');
-
             $class = $callback[0];
             $action = $callback[1];
 
-            $controller = $this->factory->create($class);
-            $controller->$action($this->request, $this->response->$responseName);
+            $controller = $this->pool->factory->create($class);
+            $this->response->$responseName = $controller->$action($this->pool);
+
+            if ( ! $this->response->$responseName instanceof Response ) {
+                throw new Exception\Error(
+                    "Response of $class->$action() should be instance of de\detert\sebastian\slimline\Response: " .
+                    get_class($this->response->$responseName) . " given"
+                );
+            }
         }
     }
 
@@ -135,10 +137,10 @@ class Controller
      */
     private function getRewriteRules()
     {
-        $rules = $this->config->requestMap;
+        $rules = $this->pool->config->requestMap;
 
-        $requestFiltered = $this->request->getFilteredData(
-            $this->factory->create('de\detert\sebastian\slimline\Request_Filter_Controller')
+        $requestFiltered = $this->pool->request->getFilteredData(
+            $this->pool->factory->create('de\detert\sebastian\slimline\Request_Filter_Controller')
         );
 
         if (empty($requestFiltered->redirect_url)) {
@@ -147,7 +149,7 @@ class Controller
 
         if (!isset($rules[$requestFiltered->redirect_url])) {
             /** @var $exception Exception\PageNotFound */
-            $exception = $this->factory->create(
+            $exception = $this->pool->factory->create(
                 'de\detert\sebastian\slimline\Exception\PageNotFound',
                 $requestFiltered->redirect_url
             );
@@ -166,7 +168,7 @@ class Controller
         $action = $callback['call'][1];
 
         foreach ($callback['template'] as $filename) {
-            $render = $this->factory->create($class, $this->config->templatePath);
+            $render = $this->pool->factory->create($class, $this->pool->config->templatePath);
             $render->$action($filename, $this->response);
         }
     }

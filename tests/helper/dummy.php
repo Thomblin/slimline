@@ -25,15 +25,17 @@ class Dummy
         $this->three = $three;
     }
 
-    public function doNothing()
+    public function doNothing(\de\detert\sebastian\slimline\Pool $pool)
     {
+        return $pool->factory->create('de\detert\sebastian\slimline\Response');
     }
 
     /**
      * @param Request $request
      * @param Response $response
      */
-    public function run(\de\detert\sebastian\slimline\Request $request, \de\detert\sebastian\slimline\Response $response)
+    public function run(\de\detert\sebastian\slimline\Pool $pool)
     {
+        return $pool->factory->create('de\detert\sebastian\slimline\Response');
     }
 }

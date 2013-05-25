@@ -219,12 +219,14 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testThatControllerActionIsCalled()
     {
+        $pool = new \de\detert\sebastian\slimline\Pool();
         $request = new \de\detert\sebastian\slimline\Request();
         $response = new \de\detert\sebastian\slimline\Response();
         $response2 = new \de\detert\sebastian\slimline\Response();
         $response3 = new \de\detert\sebastian\slimline\Response();
 
         $factory = new FactoryMock(new Factory());
+        $factory->setMock('de\detert\sebastian\slimline\Pool', $pool);
         $factory->setMock('de\detert\sebastian\slimline\Request', $request);
         $factory->setMock('de\detert\sebastian\slimline\Response', $response, 1);
         $factory->setMock('de\detert\sebastian\slimline\Response', $response2, 2);
@@ -233,10 +235,12 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $dummy = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array('run'));
         $dummy->expects($this->at(0))
             ->method('run')
-            ->with($this->equalTo($request), $this->equalTo($response2));
+            ->with($this->equalTo($pool))
+            ->will($this->returnValue($response2));
         $dummy->expects($this->at(1))
             ->method('run')
-            ->with($this->equalTo($request), $this->equalTo($response3));
+            ->with($this->equalTo($pool))
+            ->will($this->returnValue($response3));
 
         $factory->setMock('de\detert\sebastian\slimline\Tests\Helper\Dummy', $dummy, 1);
         $factory->setMock('de\detert\sebastian\slimline\Tests\Helper\Dummy', $dummy, 2);
