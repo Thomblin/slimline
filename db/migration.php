@@ -1,15 +1,14 @@
 <?php
+namespace de\detert\sebastian\slimline\db;
+
+use de\detert\sebastian\slimline\IO\Reader;
+
 /**
  * @author sebastian.detert <github@elygor.de>
  * @date 26.05.13
  * @time 11:46
  * @license property of Sebastian Detert
  */
-
-namespace de\detert\sebastian\slimline\Db;
-
-use de\detert\sebastian\slimline\IO\Reader;
-
 class Migration
 {
     /**
@@ -112,7 +111,7 @@ class Migration
             if (preg_match('/(([0-9]+)_([a-z0-9_]*)).php$/i', basename($filePath), $match)) {
                 $fileName = $match[1];
 
-                $className  = 'de\\detert\\sebastian\\slimline\Db\\';
+                $className  = 'de\\detert\\sebastian\\slimline\db\\';
                 $className .= ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $match[3] ) ) );
                 $className .= $match[2];
 

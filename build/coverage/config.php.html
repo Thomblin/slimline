@@ -63,12 +63,12 @@
           <td class="coverPerLo">0.00%</td>
           <td class="coverNumLo">0 / 1</td>
           <td class="coverBar">
-            <div class="coverBarOutline" title="100.00%">
-                <div class="size snow"  style="width:100%" title="100.00%"></div>
+            <div class="coverBarOutline" title="0.00%">
+                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
             </div>
           </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
+          <td class="coverPerLo">0.00%</td>
+          <td class="coverNumLo">0 / 1</td>
           <td class="crap"><acronym title="Change Risk Anti-Patterns (CRAP) Index">CRAP</acronym></td>
           <td class="coverBar">
             <div class="coverBarOutline" title="0.00%">
@@ -82,24 +82,43 @@
         <tr>
           <td class="coverDirectory">Config</td>
           <td class="coverBar">
-             <div class="coverBarOutline" title="100.00%">
-                <div class="size chameleon"  style="width:100%" title="100.00%"></div>
+             <div class="coverBarOutline" title="0.00%">
+                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
              </div>
           </td>
-          <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">1 / 1</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="100.00%">
-                <div class="size snow"  style="width:100%" title="100.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-          <td class="crap">0</td>
+          <td class="coverPerLo">0.00%</td>
+          <td class="coverNumLo">0 / 1</td>
           <td class="coverBar">
             <div class="coverBarOutline" title="0.00%">
                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
             </div>
+          </td>
+          <td class="coverPerLo">0.00%</td>
+          <td class="coverNumLo">0 / 1</td>
+          <td class="crap">2</td>
+          <td class="coverBar">
+            <div class="coverBarOutline" title="0.00%">
+                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
+            </div>
+          </td>
+          <td class="coverPerLo">0.00%</td>
+          <td class="coverNumLo">0 / 1</td>
+        </tr>
+
+        <tr>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#61">init()</a></td>
+          <td class="coverBar">
+            <div class="coverBarOutline" title="0.00%">
+                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
+            </div>
+          </td>
+          <td class="coverPerLo">0.00%</td>
+          <td class="coverNumLo">0 / 1</td>
+          <td class="crap">2</td>
+          <td class="coverBar">
+              <div class="coverBarOutline" title="0.00%">
+                  <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
+              </div>
           </td>
           <td class="coverPerLo">0.00%</td>
           <td class="coverNumLo">0 / 1</td>
@@ -131,7 +150,7 @@
 <span class="lineNum" id="container11"><a name="11"></a><a href="#11" id="line11">      11</a> </span>                : <span class="comment">&nbsp;*&nbsp;@license&nbsp;property&nbsp;of&nbsp;Sebastian&nbsp;Detert</span>                                                                        
 <span class="lineNum" id="container12"><a name="12"></a><a href="#12" id="line12">      12</a> </span>                : <span class="comment">&nbsp;*/</span>                                                                                                             
 <span class="lineNum" id="container13"><a name="13"></a><a href="#13" id="line13">      13</a> </span>                : <span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">Config</span>                                                                                                    
-<span class="lineNum" id="container14"><a name="14"></a><a href="#14" id="line14">      14</a> </span><span class="lineNoCov">              0 : <span class="keyword">{</span>                                                                                                               </span>
+<span class="lineNum" id="container14"><a name="14"></a><a href="#14" id="line14">      14</a> </span>                : <span class="keyword">{</span>                                                                                                               
 <span class="lineNum" id="container15"><a name="15"></a><a href="#15" id="line15">      15</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span>                                                                                                         
 <span class="lineNum" id="container16"><a name="16"></a><a href="#16" id="line16">      16</a> </span>                : <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;map&nbsp;from&nbsp;url&nbsp;to&nbsp;controllers&nbsp;and&nbsp;templates</span>                                                                
 <span class="lineNum" id="container17"><a name="17"></a><a href="#17" id="line17">      17</a> </span>                : <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;array</span>                                                                                               
@@ -174,7 +193,15 @@
 <span class="lineNum" id="container54"><a name="54"></a><a href="#54" id="line54">      54</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">)</span><span class="keyword">,</span>                                                                                                      
 <span class="lineNum" id="container55"><a name="55"></a><a href="#55" id="line55">      55</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">'call'</span><span class="default">&nbsp;</span><span class="default">=&gt;</span><span class="default">&nbsp;</span><span class="keyword">array</span><span class="keyword">(</span><span class="default">'de\detert\sebastian\slimline\Render_Plain'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">'render'</span><span class="keyword">)</span><span class="keyword">,</span>                                 
 <span class="lineNum" id="container56"><a name="56"></a><a href="#56" id="line56">      56</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">)</span><span class="keyword">;</span>                                                                                                          
-<span class="lineNum" id="container57"><a name="57"></a><a href="#57" id="line57">      57</a> </span>                : <span class="keyword">}</span>                                                                                                               
+<span class="lineNum" id="container57"><a name="57"></a><a href="#57" id="line57">      57</a> </span>                :                                                                                                                 
+<span class="lineNum" id="container58"><a name="58"></a><a href="#58" id="line58">      58</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span>                                                                                                         
+<span class="lineNum" id="container59"><a name="59"></a><a href="#59" id="line59">      59</a> </span>                : <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;this&nbsp;method&nbsp;is&nbsp;called&nbsp;after&nbsp;autoloader&nbsp;was&nbsp;registered</span>                                                    
+<span class="lineNum" id="container60"><a name="60"></a><a href="#60" id="line60">      60</a> </span>                : <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span>                                                                                                         
+<span class="lineNum" id="container61"><a name="61"></a><a href="#61" id="line61">      61</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">init</span><span class="keyword">(</span><span class="keyword">)</span>                                                                                      
+<span class="lineNum" id="container62"><a name="62"></a><a href="#62" id="line62">      62</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span>                                                                                                           
+<span class="lineNum" id="container63"><a name="63"></a><a href="#63" id="line63">      63</a> </span>                :                                                                                                                 
+<span class="lineNum" id="container64"><a name="64"></a><a href="#64" id="line64">      64</a> </span><span class="lineNoCov">              0 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                           </span>
+<span class="lineNum" id="container65"><a name="65"></a><a href="#65" id="line65">      65</a> </span>                : <span class="keyword">}</span>                                                                                                               
 
 </pre>
         </td>
@@ -183,7 +210,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Sun May 26 21:36:32 UTC 2013.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Sun May 26 22:25:24 UTC 2013.</td></tr>
     </table>
 
     <br />

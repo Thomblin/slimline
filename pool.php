@@ -24,7 +24,7 @@ class Pool {
      */
     public $factory;
     /**
-     * @var Db\Handler
+     * @var db\Handler
      */
     public $dbHandler;
 }

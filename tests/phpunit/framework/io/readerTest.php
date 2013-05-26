@@ -21,7 +21,7 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers de\detert\sebastian\slimline\Io\Reader::__construct
      * @covers de\detert\sebastian\slimline\Io\Reader::getFolder
-     * @covers de\detert\sebastian\slimline\Io\Reader::getFiles
+     * @covers de\detert\sebastian\slimline\Io\Reader::getRelativeFiles
      * @covers de\detert\sebastian\slimline\Io\Reader::createRelativePath
      */
     public function testShouldFindRelativeFiles()
@@ -44,7 +44,6 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
      * @covers de\detert\sebastian\slimline\Io\Reader::__construct
      * @covers de\detert\sebastian\slimline\Io\Reader::getFolder
      * @covers de\detert\sebastian\slimline\Io\Reader::getFiles
-     * @covers de\detert\sebastian\slimline\Io\Reader::createRelativePath
      */
     public function testShouldFindFiles()
     {

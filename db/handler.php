@@ -1,5 +1,5 @@
 <?php
-namespace de\detert\sebastian\slimline\Db;
+namespace de\detert\sebastian\slimline\db;
 
 /**
  * database handler for sql queries and more

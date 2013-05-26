@@ -1,8 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline\Tests;
 
-use de\detert\sebastian\slimline\Db\Handler;
-use de\detert\sebastian\slimline\Db\Migration;
+use de\detert\sebastian\slimline\db\Handler;
+use de\detert\sebastian\slimline\db\Migration;
 use de\detert\sebastian\slimline\Io\Reader;
 
 require_once BASE_DIR . 'db' . DS . 'config.php';
@@ -30,7 +30,7 @@ class DbMigrationTest extends Helper\TestCase
 
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Handler::__construct
+     * @covers de\detert\sebastian\slimline\db\Handler::__construct
      */
     public function setUp()
     {
@@ -54,9 +54,9 @@ class DbMigrationTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Migration::__construct
-     * @covers de\detert\sebastian\slimline\Db\Migration::update
-     * @covers de\detert\sebastian\slimline\Db\Migration::initMigrationTable
+     * @covers de\detert\sebastian\slimline\db\Migration::__construct
+     * @covers de\detert\sebastian\slimline\db\Migration::update
+     * @covers de\detert\sebastian\slimline\db\Migration::initMigrationTable
      */
     public function testShouldInitializeMigrationTable()
     {
@@ -79,14 +79,14 @@ class DbMigrationTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Migration::__construct
-     * @covers de\detert\sebastian\slimline\Db\Migration::update
-     * @covers de\detert\sebastian\slimline\Db\Migration::doMigration
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationVersions
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationFiles
-     * @covers de\detert\sebastian\slimline\Db\Migration::getFilesForUpdate
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationClasses
-     * @covers de\detert\sebastian\slimline\Db\Migration::upAction
+     * @covers de\detert\sebastian\slimline\db\Migration::__construct
+     * @covers de\detert\sebastian\slimline\db\Migration::update
+     * @covers de\detert\sebastian\slimline\db\Migration::doMigration
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationVersions
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationFiles
+     * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
+     * @covers de\detert\sebastian\slimline\db\Migration::upAction
      */
     public function testShouldPerformMigration()
     {
@@ -116,14 +116,14 @@ class DbMigrationTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Migration::__construct
-     * @covers de\detert\sebastian\slimline\Db\Migration::update
-     * @covers de\detert\sebastian\slimline\Db\Migration::doMigration
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationVersions
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationFiles
-     * @covers de\detert\sebastian\slimline\Db\Migration::getFilesForUpdate
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationClasses
-     * @covers de\detert\sebastian\slimline\Db\Migration::upAction
+     * @covers de\detert\sebastian\slimline\db\Migration::__construct
+     * @covers de\detert\sebastian\slimline\db\Migration::update
+     * @covers de\detert\sebastian\slimline\db\Migration::doMigration
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationVersions
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationFiles
+     * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
+     * @covers de\detert\sebastian\slimline\db\Migration::upAction
      */
     public function testShouldNotPerformMigration1()
     {
@@ -162,10 +162,10 @@ class DbMigrationTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationClasses
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      *
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage 1_no_class.php' does not contain class 'de\detert\sebastian\slimline\Db\NoClass1'
+     * @expectedExceptionMessage 1_no_class.php' does not contain class 'de\detert\sebastian\slimline\db\NoClass1'
      */
     public function testShouldThrowErrorIfClassIsMissing()
     {
@@ -174,7 +174,7 @@ class DbMigrationTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Migration::getMigrationClasses
+     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      *
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage must extend MigrationStatement

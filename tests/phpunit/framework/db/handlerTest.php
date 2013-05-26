@@ -1,7 +1,7 @@
 <?php
 namespace de\detert\sebastian\slimline\Tests;
 
-use de\detert\sebastian\slimline\Db\Handler;
+use de\detert\sebastian\slimline\db\Handler;
 
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
@@ -21,7 +21,7 @@ class DbHandlerTest extends Helper\TestCase
 
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Handler::__construct
+     * @covers de\detert\sebastian\slimline\db\Handler::__construct
      */
     public function setUp()
     {
@@ -32,8 +32,9 @@ class DbHandlerTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Handler::query
-     * @covers de\detert\sebastian\slimline\Db\Handler::fetchAll
+     * @covers de\detert\sebastian\slimline\db\Handler::query
+     * @covers de\detert\sebastian\slimline\db\Handler::prepareAndExecute
+     * @covers de\detert\sebastian\slimline\db\Handler::fetchAll
      */
     public function testShouldExecuteQuery()
     {
@@ -52,7 +53,7 @@ class DbHandlerTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\Db\Handler::fetchIndexedBy
+     * @covers de\detert\sebastian\slimline\db\Handler::fetchIndexedBy
      */
     public function testShouldReturnRowsByIndex()
     {

@@ -1,5 +1,5 @@
 <?php
-namespace de\detert\sebastian\slimline\Db;
+namespace de\detert\sebastian\slimline\db;
 
 /**
  * database configurations
@@ -13,4 +13,5 @@ class Config {
     public $dsn;
     public $user;
     public $password;
+    public $migrationPath;
 }

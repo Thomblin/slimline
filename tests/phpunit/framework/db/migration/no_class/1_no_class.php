@@ -6,7 +6,7 @@
  * @license property of Sebastian Detert
  */
 
-namespace de\detert\sebastian\slimline\Db;
+namespace de\detert\sebastian\slimline\db;
 
 class AnyClass1 extends MigrationStatement
 {

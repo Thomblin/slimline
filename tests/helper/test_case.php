@@ -1,7 +1,7 @@
 <?php
 namespace de\detert\sebastian\slimline\Tests\Helper;
 
-use de\detert\sebastian\slimline\Db\Config;
+use de\detert\sebastian\slimline\db\Config;
 
 /**
  * @author sebastian.detert <github@elygor.de>

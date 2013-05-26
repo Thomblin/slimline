@@ -40,6 +40,8 @@ class Controller
         $this->pool->factory = $factory;
 
         spl_autoload_register(array($this, 'simpleAutoload'));
+
+        $this->pool->config->init();
     }
 
     /**
