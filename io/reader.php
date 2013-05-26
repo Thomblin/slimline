@@ -45,13 +45,24 @@ class Reader
         $files    = new \RegexIterator($ite, $this->pattern, \RegexIterator::GET_MATCH);
 
         $fileList = array();
-        $offset   = strlen($this->folder) + 1;
         foreach($files as $file) {
-            array_walk($file, array($this, 'createRelativePath'), $offset);
             $fileList = array_merge($fileList, $file);
         }
 
         return $fileList;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelativeFiles()
+    {
+        $files = $this->getFiles();
+
+        $offset = strlen($this->folder) + 1;
+        array_walk($files, array($this, 'createRelativePath'), $offset);
+
+        return $files;
     }
 
     /**
@@ -61,7 +72,7 @@ class Reader
      * @param int    $key    key in array
      * @param int    $offset offset for substr
      */
-    public function createRelativePath(&$string, $key, $offset = 0)
+    private function createRelativePath(&$string, $key, $offset = 0)
     {
         $string = substr($string, $offset);
     }

@@ -22,6 +22,7 @@ class Handler
     public function __construct(Config $config)
     {
         $this->db = new \PDO($config->dsn, $config->user, $config->password);
+        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     /**

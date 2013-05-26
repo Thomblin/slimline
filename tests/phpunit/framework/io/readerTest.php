@@ -3,7 +3,7 @@ namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\IO\Reader;
 
-require_once BASE_DIR . 'io\reader.php';
+require_once BASE_DIR . 'io' . DS . 'reader.php';
 
 /**
  * @author sebastian.detert <github@elygor.de>
@@ -19,7 +19,32 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
     private $reader;
 
     /**
-     *
+     * @covers de\detert\sebastian\slimline\Io\Reader::__construct
+     * @covers de\detert\sebastian\slimline\Io\Reader::getFolder
+     * @covers de\detert\sebastian\slimline\Io\Reader::getFiles
+     * @covers de\detert\sebastian\slimline\Io\Reader::createRelativePath
+     */
+    public function testShouldFindRelativeFiles()
+    {
+        $reader = new Reader(__DIR__ . DS . 'misc', '/.*\.sql/');
+
+        $this->assertSame(__DIR__ . DS . 'misc', $reader->getFolder());
+
+        $files = $reader->getRelativeFiles();
+
+        $expected = array(
+            'first.sql',
+            'second.sql',
+            'third' . DS . 'fourth.sql'
+        );
+
+        $this->assertSame($expected, $files);
+    }
+    /**
+     * @covers de\detert\sebastian\slimline\Io\Reader::__construct
+     * @covers de\detert\sebastian\slimline\Io\Reader::getFolder
+     * @covers de\detert\sebastian\slimline\Io\Reader::getFiles
+     * @covers de\detert\sebastian\slimline\Io\Reader::createRelativePath
      */
     public function testShouldFindFiles()
     {
@@ -30,9 +55,9 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
         $files = $reader->getFiles();
 
         $expected = array(
-            'first.sql',
-            'second.sql',
-            'third' . DS . 'fourth.sql'
+            __DIR__ . DS . 'misc' . DS . 'first.sql',
+            __DIR__ . DS . 'misc' . DS . 'second.sql',
+            __DIR__ . DS . 'misc' . DS . 'third' . DS . 'fourth.sql'
         );
 
         $this->assertSame($expected, $files);
