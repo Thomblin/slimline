@@ -28,7 +28,7 @@
                 labels: {style: {fontSize: '8px'}},
             },
             series: [{
-                data: [7,0,0,0,0,0,0,1,1,1,0,4]
+                data: [18,0,0,0,0,0,0,0,0,0,0,0]
             }],
           });
 
@@ -53,7 +53,7 @@
                 }
             },
             series: [{
-              data: [[73.611111111111,19,"<a href=\"controller.php.html#19\">Controller<\/a>"],[0,0,"<a href=\"db_config.php.html#12\">Config<\/a>"],[0,5,"<a href=\"exception_handler.php.html#12\">Handler<\/a>"],[0,0,"<a href=\"exception_assert.php.html#12\">Assert<\/a>"],[0,0,"<a href=\"exception_error.php.html#12\">Error<\/a>"],[0,0,"<a href=\"exception_pagenotfound.php.html#12\">PageNotFound<\/a>"],[100,1,"<a href=\"factory.php.html#12\">Factory<\/a>"],[66.666666666667,5,"<a href=\"render.php.html#12\">Render<\/a>"],[100,1,"<a href=\"render_html.php.html#12\">Render_Html<\/a>"],[100,1,"<a href=\"render_plain.php.html#12\">Render_Plain<\/a>"],[88.888888888889,10,"<a href=\"request.php.html#15\">Request<\/a>"],[0,0,"<a href=\"request_filter_controller.php.html#22\">Request_Filter_Controller<\/a>"],[100,3,"<a href=\"request_filtered.php.html#12\">Request_Filtered<\/a>"],[0,0,"<a href=\"response.php.html#12\">Response<\/a>"]],
+              data: [[0,19,"<a href=\"controller.php.html#19\">Controller<\/a>"],[0,0,"<a href=\"db_config.php.html#12\">Config<\/a>"],[0,5,"<a href=\"exception_handler.php.html#12\">Handler<\/a>"],[0,4,"<a href=\"db_migration.php.html#13\">Migration<\/a>"],[0,0,"<a href=\"exception_assert.php.html#12\">Assert<\/a>"],[0,0,"<a href=\"exception_error.php.html#12\">Error<\/a>"],[0,0,"<a href=\"exception_pagenotfound.php.html#12\">PageNotFound<\/a>"],[0,1,"<a href=\"factory.php.html#12\">Factory<\/a>"],[0,5,"<a href=\"io_reader.php.html#12\">Reader<\/a>"],[0,0,"<a href=\"pool.php.html#13\">Pool<\/a>"],[0,5,"<a href=\"render.php.html#12\">Render<\/a>"],[0,1,"<a href=\"render_html.php.html#12\">Render_Html<\/a>"],[0,1,"<a href=\"render_plain.php.html#12\">Render_Plain<\/a>"],[0,10,"<a href=\"request.php.html#15\">Request<\/a>"],[0,0,"<a href=\"request_filter.php.html#22\">Request_Filter<\/a>"],[0,0,"<a href=\"request_filter_controller.php.html#22\">Request_Filter_Controller<\/a>"],[0,3,"<a href=\"request_filtered.php.html#12\">Request_Filtered<\/a>"],[0,0,"<a href=\"response.php.html#12\">Response<\/a>"]],
               marker: {
                   symbol: 'diamond'
               }
@@ -89,10 +89,12 @@
           <td valign="top">
             <h2>Top Project Risks</h2>
             <ul>
+              <li><a href="controller.php.html#19">Controller</a> (380)</li>
+              <li><a href="request.php.html#15">Request</a> (110)</li>
+              <li><a href="render.php.html#12">Render</a> (30)</li>
+              <li><a href="io_reader.php.html#12">Reader</a> (30)</li>
               <li><a href="exception_handler.php.html#12">Handler</a> (30)</li>
-              <li><a href="controller.php.html#19">Controller</a> (25)</li>
-              <li><a href="request.php.html#15">Request</a> (10)</li>
-              <li><a href="render.php.html#12">Render</a> (5)</li>
+              <li><a href="request_filtered.php.html#12">Request_Filtered</a> (12)</li>
 
             </ul>
           </td>
@@ -100,16 +102,16 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
-              <li><a href="exception_handler.php.html#58">Handler::errorHandler</a> (0%)</li>
               <li><a href="render.php.html#22">Render::__construct</a> (0%)</li>
+              <li><a href="render.php.html#31">Render::render</a> (0%)</li>
+              <li><a href="render_html.php.html#17">Render_Html::getTemplateFolder</a> (0%)</li>
+              <li><a href="io_reader.php.html#64">Reader::createRelativePath</a> (0%)</li>
+              <li><a href="io_reader.php.html#41">Reader::getFiles</a> (0%)</li>
+              <li><a href="io_reader.php.html#27">Reader::__construct</a> (0%)</li>
+              <li><a href="io_reader.php.html#33">Reader::getFolder</a> (0%)</li>
+              <li><a href="render_plain.php.html#17">Render_Plain::getTemplateFolder</a> (0%)</li>
               <li><a href="request.php.html#25">Request::__construct</a> (0%)</li>
-              <li><a href="exception_handler.php.html#43">Handler::addErrorHandler</a> (0%)</li>
-              <li><a href="exception_handler.php.html#35">Handler::assertHandler</a> (0%)</li>
-              <li><a href="exception_handler.php.html#17">Handler::addAssertHandler</a> (0%)</li>
-              <li><a href="controller.php.html#165">Controller::render</a> (0%)</li>
-              <li><a href="controller.php.html#138">Controller::getRewriteRules</a> (64%)</li>
-              <li><a href="controller.php.html#114">Controller::setResponse</a> (69%)</li>
-              <li><a href="controller.php.html#68">Controller::run</a> (70%)</li>
+              <li><a href="request_filtered.php.html#17">Request_Filtered::__construct</a> (0%)</li>
 
             </ul>
           </td>
@@ -121,7 +123,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Sat May 25 9:20:16 UTC 2013.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Sun May 26 11:40:53 UTC 2013.</td></tr>
     </table>
 
     <br/>

@@ -59,4 +59,21 @@ class Handler
     {
         return $this->prepareAndExecute($sql, $params)->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    /**
+     * @param string $sql
+     * @param string $indexColumn
+     * @param array  $params
+     *
+     * @return array
+     */
+    public function fetchIndexedBy($sql, $indexColumn, array $params = array())
+    {
+        $results = array();
+        foreach ( $this->fetchAll($sql, $params) as $row ) {
+            $results[$row[$indexColumn]] = $row;
+        }
+
+        return $results;
+    }
 }
