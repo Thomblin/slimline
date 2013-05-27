@@ -28,7 +28,7 @@
                 labels: {style: {fontSize: '8px'}},
             },
             series: [{
-                data: [8,0,0,0,0,0,0,1,1,1,0,6]
+                data: [8,0,0,0,0,0,1,0,2,1,0,6]
             }],
           });
 
@@ -53,7 +53,7 @@
                 }
             },
             series: [{
-              data: [[0,1,"<a href=\"config.php.html#13\">Config<\/a>"],[73.972602739726,19,"<a href=\"controller.php.html#19\">Controller<\/a>"],[0,5,"<a href=\"exception_handler.php.html#12\">Handler<\/a>"],[100,16,"<a href=\"db_migration.php.html#12\">Migration<\/a>"],[0,2,"<a href=\"db_migration_statement.php.html#11\">MigrationStatement<\/a>"],[0,0,"<a href=\"exception_assert.php.html#12\">Assert<\/a>"],[0,0,"<a href=\"exception_error.php.html#12\">Error<\/a>"],[0,0,"<a href=\"exception_pagenotfound.php.html#12\">PageNotFound<\/a>"],[100,1,"<a href=\"factory.php.html#12\">Factory<\/a>"],[100,6,"<a href=\"io_reader.php.html#12\">Reader<\/a>"],[66.666666666667,5,"<a href=\"render.php.html#12\">Render<\/a>"],[100,1,"<a href=\"render_html.php.html#12\">Render_Html<\/a>"],[100,1,"<a href=\"render_plain.php.html#12\">Render_Plain<\/a>"],[88.888888888889,10,"<a href=\"request.php.html#15\">Request<\/a>"],[0,0,"<a href=\"request_filter_controller.php.html#22\">Request_Filter_Controller<\/a>"],[100,3,"<a href=\"request_filtered.php.html#12\">Request_Filtered<\/a>"],[0,0,"<a href=\"response.php.html#12\">Response<\/a>"]],
+              data: [[0,1,"<a href=\"config.php.html#13\">Config<\/a>"],[73.972602739726,19,"<a href=\"controller.php.html#19\">Controller<\/a>"],[0,5,"<a href=\"exception_handler.php.html#12\">Handler<\/a>"],[100,13,"<a href=\"db_migration.php.html#12\">Migration<\/a>"],[72.727272727273,5,"<a href=\"db_migration_repository.php.html#11\">Migration_Repository<\/a>"],[0,2,"<a href=\"db_migration_statement.php.html#11\">Migration_Statement<\/a>"],[0,0,"<a href=\"exception_assert.php.html#12\">Assert<\/a>"],[0,0,"<a href=\"exception_error.php.html#12\">Error<\/a>"],[0,0,"<a href=\"exception_pagenotfound.php.html#12\">PageNotFound<\/a>"],[100,1,"<a href=\"factory.php.html#12\">Factory<\/a>"],[100,6,"<a href=\"io_reader.php.html#12\">Reader<\/a>"],[53.333333333333,7,"<a href=\"render.php.html#12\">Render<\/a>"],[100,1,"<a href=\"render_html.php.html#12\">Render_Html<\/a>"],[100,1,"<a href=\"render_plain.php.html#12\">Render_Plain<\/a>"],[88.888888888889,10,"<a href=\"request.php.html#15\">Request<\/a>"],[0,0,"<a href=\"request_filter_controller.php.html#22\">Request_Filter_Controller<\/a>"],[100,3,"<a href=\"request_filtered.php.html#12\">Request_Filtered<\/a>"],[0,0,"<a href=\"response.php.html#12\">Response<\/a>"]],
               marker: {
                   symbol: 'diamond'
               }
@@ -91,8 +91,8 @@
             <ul>
               <li><a href="exception_handler.php.html#12">Handler</a> (30)</li>
               <li><a href="controller.php.html#19">Controller</a> (25)</li>
+              <li><a href="render.php.html#12">Render</a> (11)</li>
               <li><a href="request.php.html#15">Request</a> (10)</li>
-              <li><a href="render.php.html#12">Render</a> (5)</li>
 
             </ul>
           </td>
@@ -100,16 +100,16 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
+              <li><a href="db_migration_repository.php.html#15">Migration_Repository::__construct</a> (0%)</li>
               <li><a href="exception_handler.php.html#58">Handler::errorHandler</a> (0%)</li>
-              <li><a href="exception_handler.php.html#43">Handler::addErrorHandler</a> (0%)</li>
-              <li><a href="db_migration_statement.php.html#15">MigrationStatement::__construct</a> (0%)</li>
-              <li><a href="render.php.html#22">Render::__construct</a> (0%)</li>
+              <li><a href="db_migration_repository.php.html#23">Migration_Repository::getHandler</a> (0%)</li>
+              <li><a href="db_migration_statement.php.html#15">Migration_Statement::__construct</a> (0%)</li>
               <li><a href="request.php.html#25">Request::__construct</a> (0%)</li>
-              <li><a href="config.php.html#61">Config::init</a> (0%)</li>
+              <li><a href="render.php.html#22">Render::__construct</a> (0%)</li>
+              <li><a href="config.php.html#65">Config::init</a> (0%)</li>
+              <li><a href="exception_handler.php.html#43">Handler::addErrorHandler</a> (0%)</li>
               <li><a href="exception_handler.php.html#35">Handler::assertHandler</a> (0%)</li>
               <li><a href="controller.php.html#167">Controller::render</a> (0%)</li>
-              <li><a href="exception_handler.php.html#17">Handler::addAssertHandler</a> (0%)</li>
-              <li><a href="controller.php.html#140">Controller::getRewriteRules</a> (64%)</li>
 
             </ul>
           </td>
@@ -121,7 +121,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Sun May 26 22:25:24 UTC 2013.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.6.10 at Mon May 27 21:26:35 UTC 2013.</td></tr>
     </table>
 
     <br/>

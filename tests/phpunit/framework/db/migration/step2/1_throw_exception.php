@@ -8,7 +8,7 @@
 
 namespace de\detert\sebastian\slimline\db;
 
-class ThrowException1 extends MigrationStatement
+class ThrowException1 extends Migration_Statement
 {
     public function up()
     {

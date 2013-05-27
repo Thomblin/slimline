@@ -3,11 +3,13 @@ namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\db\Handler;
 use de\detert\sebastian\slimline\db\Migration;
+use de\detert\sebastian\slimline\db\Migration_Repository;
 use de\detert\sebastian\slimline\Io\Reader;
 
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
 require_once BASE_DIR . 'db' . DS . 'migration.php';
+require_once BASE_DIR . 'db' . DS . 'migration' . DS . 'repository.php';
 require_once BASE_DIR . 'db' . DS . 'migration' . DS . 'statement.php';
 require_once BASE_DIR . 'io' . DS . 'reader.php';
 
@@ -49,14 +51,15 @@ class DbMigrationTest extends Helper\TestCase
     private function initMigrationClass($path)
     {
         $reader = new Reader($path, '/.*\.php/');
+        $repository = new Migration_Repository($this->handler);
 
-        $this->migration = new Migration($this->handler, $reader);
+        $this->migration = new Migration($repository, $reader);
     }
 
     /**
      * @covers de\detert\sebastian\slimline\db\Migration::__construct
      * @covers de\detert\sebastian\slimline\db\Migration::update
-     * @covers de\detert\sebastian\slimline\db\Migration::initMigrationTable
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::initMigrationTable
      */
     public function testShouldInitializeMigrationTable()
     {
@@ -82,11 +85,11 @@ class DbMigrationTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\db\Migration::__construct
      * @covers de\detert\sebastian\slimline\db\Migration::update
      * @covers de\detert\sebastian\slimline\db\Migration::doMigration
-     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationVersions
-     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationFiles
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::getMigrationVersions
      * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
      * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      * @covers de\detert\sebastian\slimline\db\Migration::upAction
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::insertMigrationVersion
      */
     public function testShouldPerformMigration()
     {
@@ -119,8 +122,7 @@ class DbMigrationTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\db\Migration::__construct
      * @covers de\detert\sebastian\slimline\db\Migration::update
      * @covers de\detert\sebastian\slimline\db\Migration::doMigration
-     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationVersions
-     * @covers de\detert\sebastian\slimline\db\Migration::getMigrationFiles
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::getMigrationVersions
      * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
      * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      * @covers de\detert\sebastian\slimline\db\Migration::upAction
@@ -177,7 +179,7 @@ class DbMigrationTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      *
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage must extend MigrationStatement
+     * @expectedExceptionMessage must extend Migration_Statement
      */
     public function testShouldThrowErrorIfClassHasWrongType()
     {

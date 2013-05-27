@@ -45,6 +45,10 @@ class Config
      */
     public $setErrorHandler = true;
     /**
+     * @var array
+     */
+    public $db = array();
+    /**
      * display exception that were not catched
      * @var array
      */

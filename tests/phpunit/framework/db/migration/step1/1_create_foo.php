@@ -8,7 +8,7 @@
 
 namespace de\detert\sebastian\slimline\db;
 
-class CreateFoo1 extends MigrationStatement
+class CreateFoo1 extends Migration_Statement
 {
     public function up()
     {

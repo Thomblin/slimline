@@ -12,9 +12,9 @@ use de\detert\sebastian\slimline\IO\Reader;
 class Migration
 {
     /**
-     * @var Handler
+     * @var Migration_Repository
      */
-    private $db;
+    private $repository;
 
     /**
      * @var Reader
@@ -25,28 +25,16 @@ class Migration
      * @param Handler $db
      * @param string  $path path where migration files are located
      */
-    public function __construct(Handler $db, Reader $reader)
+    public function __construct(Migration_Repository $repository, Reader $reader)
     {
-        $this->db     = $db;
-        $this->reader = $reader;
+        $this->repository = $repository;
+        $this->reader     = $reader;
     }
 
     public function update()
     {
-        $this->initMigrationTable();
+        $this->repository->initMigrationTable();
         $this->doMigration();
-    }
-
-    private function initMigrationTable()
-    {
-        $sql = "CREATE TABLE IF NOT EXISTS `migration_version` (
-            `id` INT(20) NOT NULL AUTO_INCREMENT,
-            `filename` VARCHAR(100) NOT NULL,
-            PRIMARY KEY (`id`),
-            UNIQUE KEY (`filename`)
-        ) ENGINE=InnoDb DEFAULT charset=utf8";
-
-        $this->db->query($sql);
     }
 
     /**
@@ -56,26 +44,14 @@ class Migration
      */
     private function doMigration()
     {
-        $filesDone  = $this->getMigrationVersions();
-        $filesKnown = $this->getMigrationFiles();
+        $filesDone  = $this->repository->getMigrationVersions();
+        $filesKnown = $this->reader->getFiles();
 
         $filesForUpdate = $this->getFilesForUpdate($filesKnown, $filesDone);
 
         $classesForUpdate = $this->getMigrationClasses($filesForUpdate);
 
         $this->upAction($classesForUpdate);
-    }
-
-    private function getMigrationVersions()
-    {
-        $sql = "SELECT `filename` FROM `migration_version`";
-
-        return $this->db->fetchIndexedBy($sql, 'filename');
-    }
-
-    private function getMigrationFiles()
-    {
-        return $this->reader->getFiles();
     }
 
     /**
@@ -120,10 +96,10 @@ class Migration
                     throw new \InvalidArgumentException("file '$filePath' does not contain class '$className'");
                 }
 
-                $class = new $className($this->db);
+                $class = new $className($this->repository->getHandler());
 
-                if (!($class instanceof MigrationStatement)) {
-                    throw new \InvalidArgumentException("class '$className' must extend MigrationStatement");
+                if (!($class instanceof Migration_Statement)) {
+                    throw new \InvalidArgumentException("class '$className' must extend Migration_Statement");
                 }
 
                 $versions[$fileName] = $class;
@@ -143,8 +119,7 @@ class Migration
         foreach( $classes as $filename => $class ) {
             $class->up();
 
-            $sql = "INSERT INTO `migration_version` (`id`, `filename`) VALUES (NULL, ?)";
-            $this->db->query($sql, array($filename));
+            $this->repository->insertMigrationVersion($filename);
         }
     }
 }

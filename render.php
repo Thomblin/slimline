@@ -31,8 +31,14 @@ abstract class Render
     public function render($template, $content)
     {
         if ( is_object($content) ) {
+            if ( isset($content->content) ) {
+                trigger_error("\$content->content should not be used", E_USER_WARNING);
+            }
             extract(get_object_vars($content));
         } elseif ( is_array($content) ) {
+            if ( isset($content->content) ) {
+                trigger_error("\$content['content'] should not be used", E_USER_WARNING);
+            }
             extract($content);
         }
 

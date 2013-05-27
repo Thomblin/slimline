@@ -8,7 +8,7 @@
 
 namespace de\detert\sebastian\slimline\db;
 
-class AnyClass1 extends MigrationStatement
+class AnyClass1 extends Migration_Statement
 {
     public function up()
     {

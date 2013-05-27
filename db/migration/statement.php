@@ -8,7 +8,7 @@
 
 namespace de\detert\sebastian\slimline\db;
 
-abstract class MigrationStatement
+abstract class Migration_Statement
 {
     protected $db;
 
