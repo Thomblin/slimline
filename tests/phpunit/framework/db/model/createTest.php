@@ -71,7 +71,7 @@ class DbModelCreateTest extends Helper\TestCase
         $modelCreate = new Model_Create($this->repository);
 
         $dir = __DIR__ . DS . 'tmp';
-        $dirGenerated = __DIR__ . DS . 'tmp' . DS . 'generated';
+        $dirGenerated = __DIR__ . DS . 'tmpgenerated';
         array_map('unlink', glob($dirGenerated . DS . '*'));
 
         unlink($dir . DS . 'foo.php');

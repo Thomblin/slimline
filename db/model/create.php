@@ -56,21 +56,37 @@ class Model_Create
 
             }
 
-            $className = ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $tableName ) ) );
+            $className = ucfirst( preg_replace( '/(_.?)/e', "strtoupper('$1')", strtolower( $tableName ) ) );
 
             $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_generated');
             $template = str_replace('%name%', $className, $template);
             $template = str_replace('%namespace%', $namespace, $template);
             $template = str_replace('%columns%', $columns, $template);
 
-            file_put_contents($dir . DS . 'generated' . DS . $tableName . '.php', $template);
+            $filename = $dir . 'generated' . DS . str_replace('_', DS, $tableName) . '.php';
+            $this->filePutContents($filename, $template);
 
-            if ( !file_exists($dir . DS . $tableName . '.php') ) {
+            $filename = $dir . DS . str_replace('_', DS, $tableName) . '.php';
+            if ( !file_exists($filename) ) {
                 $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_extend');
                 $template = str_replace('%name%', $className, $template);
                 $template = str_replace('%namespace%', $namespace, $template);
-                file_put_contents($dir . DS . $tableName . '.php', $template);
+
+                $this->filePutContents($filename, $template);
             }
         }
+    }
+
+    /**
+     * @param string $filename
+     * @param string $template
+     */
+    private function filePutContents($filename, $template)
+    {
+        if (!file_exists(dirname($filename))) {
+            mkdir(dirname($filename), 0777, true);
+        }
+
+        file_put_contents($filename, $template);
     }
 }

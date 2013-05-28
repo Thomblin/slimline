@@ -1,13 +1,12 @@
 <?php
+namespace %namespace%generated;
+
 /**
  * @author sebastian.detert <github@elygor.de>
  * @date 28.05.13
  * @time 20:12
  * @license property of Sebastian Detert
  */
-
-namespace %namespace%\generated;
-
 class %name%
 {%columns%
 }
