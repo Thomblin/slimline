@@ -1,14 +1,14 @@
 <?php
+namespace de\detert\sebastian\slimline\db;
+
 /**
+ * create simple models for each db table
+ *
  * @author sebastian.detert <github@elygor.de>
  * @date 28.05.13
  * @time 19:15
  * @license property of Sebastian Detert
  */
-
-namespace de\detert\sebastian\slimline\db;
-
-
 class Model_Create
 {
     /**
@@ -16,12 +16,26 @@ class Model_Create
      */
     private $repository;
 
+    /**
+     * @param Model_Repository $repository
+     */
     public function __construct(Model_Repository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function createModels($dir)
+    /**
+     * @param callback $callback
+     */
+    public function setClassNameCallback($callback)
+    {
+        $this->classNameCallback = $callback;
+    }
+
+    /**
+     * @param string $dir
+     */
+    public function createModels($dir, $namespace = 'de\detert\sebastian\slimline\db\model')
     {
         $tables = $this->repository->getAllTables();
 
@@ -42,10 +56,21 @@ class Model_Create
 
             }
 
-            $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template');
+            $className = ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $tableName ) ) );
+
+            $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_generated');
+            $template = str_replace('%name%', $className, $template);
+            $template = str_replace('%namespace%', $namespace, $template);
             $template = str_replace('%columns%', $columns, $template);
 
-            file_put_contents($dir . DS . $tableName . '.php', $template);
+            file_put_contents($dir . DS . 'generated' . DS . $tableName . '.php', $template);
+
+            if ( !file_exists($dir . DS . $tableName . '.php') ) {
+                $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_extend');
+                $template = str_replace('%name%', $className, $template);
+                $template = str_replace('%namespace%', $namespace, $template);
+                file_put_contents($dir . DS . $tableName . '.php', $template);
+            }
         }
     }
 }

@@ -6,9 +6,9 @@
  * @license property of Sebastian Detert
  */
 
-namespace de\detert\sebastian\slimline\db\model;
+namespace %namespace%;
 
-class Foo extends de\detert\sebastian\slimline\db\model\generated\Foo
+class %name% extends %namespace%\generated\%name%
 {
 
 }

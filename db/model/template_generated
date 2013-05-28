@@ -6,8 +6,8 @@
  * @license property of Sebastian Detert
  */
 
-namespace de\detert\sebastian\slimline\db\model;
+namespace %namespace%\generated;
 
-class Foo {
-%columns%
+class %name%
+{%columns%
 }

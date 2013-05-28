@@ -71,12 +71,24 @@ class DbModelCreateTest extends Helper\TestCase
         $modelCreate = new Model_Create($this->repository);
 
         $dir = __DIR__ . DS . 'tmp';
-        array_map('unlink', glob($dir . DS . '*'));
+        $dirGenerated = __DIR__ . DS . 'tmp' . DS . 'generated';
+        array_map('unlink', glob($dirGenerated . DS . '*'));
 
+        unlink($dir . DS . 'foo.php');
         $modelCreate->createModels($dir);
+
+        $this->assertTrue(file_exists($dirGenerated . DS . 'foo.php'));
+
+        $this->assertEquals(
+            file_get_contents( __DIR__ . DS . 'foo.php'),
+            file_get_contents( $dirGenerated . DS . 'foo.php')
+        );
 
         $this->assertTrue(file_exists($dir . DS . 'foo.php'));
 
-        $this->assertEquals(file_get_contents( __DIR__ . DS . 'foo.php'), file_get_contents( $dir . DS . 'foo.php'));
+        $this->assertEquals(
+            file_get_contents( __DIR__ . DS . 'foo_extend.php'),
+            file_get_contents( $dir . DS . 'foo.php')
+        );
     }
 }
