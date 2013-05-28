@@ -77,4 +77,46 @@ class Handler
 
         return $results;
     }
+
+    /**
+     * @param string $class
+     * @param array  $where
+     */
+    public function loadModel($class, array $where)
+    {
+        $table = strtolower(
+            preg_replace(
+                '/(?<=\\w)(?=[A-Z])/',
+                "_$1",
+                substr($class, strrpos($class, '\\') + 1)
+            )
+        );
+
+        $sql = "SELECT
+                *
+            FROM
+                `$table`
+            WHERE ";
+
+        $params = array();
+        foreach ( $where as $column => $value ) {
+            $params[] = " `$column` = ? ";
+        }
+
+        $sql .= implode(' AND ', $params)." LIMIT 1";
+
+        $result = $this->fetchAll($sql, array_values($where));
+
+        if ( empty($result[0]) ) {
+            throw new Exception_Notfound("model $class not found with " . print_r($where, true));
+        }
+
+        $model = new $class();
+
+        foreach ( $result[0] as $column => $value ) {
+            $model->$column = $value;
+        }
+
+        return $model;
+    }
 }

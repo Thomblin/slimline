@@ -2,9 +2,12 @@
 namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\db\Handler;
+use de\detert\sebastian\slimline\db\model\HandlerModel;
 
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
+require_once BASE_DIR . 'db' . DS . 'exception' . DS . 'notfound.php';
+require_once 'handler_model.php';
 
 /**
  * @author sebastian.detert <github@elygor.de>
@@ -28,6 +31,9 @@ class DbHandlerTest extends Helper\TestCase
         $this->handler = new Handler($this->dbConfig);
 
         $sql = 'DROP TABLE IF EXISTS `foo`';
+        $this->handler->query($sql);
+
+        $sql = 'DROP TABLE IF EXISTS `handler_model`';
         $this->handler->query($sql);
     }
 
@@ -69,5 +75,38 @@ class DbHandlerTest extends Helper\TestCase
             'two' => array('id' => 2, 'misc' => 'two'),
         );
         $this->assertEquals($expected, $this->handler->fetchIndexedBy("SELECT * from `foo`", 'misc'));
+    }
+
+    public function testShouldReturnModel()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `handler_model` VALUES (?, ?), (?, ?)';
+        $params = array(1, 'one', 2, 'two');
+        $this->handler->query($sql, $params);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $expected = new HandlerModel();
+        $expected->id = 1;
+        $expected->text = 'one';
+
+        $this->assertEquals(
+            $expected,
+            $actual,
+            "expected\n" . print_r($expected, true) . "\actual\n" . print_r($actual, true)
+        );
+    }
+
+    /**
+     * @expectedException de\detert\sebastian\slimline\db\Exception_Notfound
+     */
+    public function testShouldThrowExceptionIfModelNotFoundInDb()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100))';
+        $this->handler->query($sql);
+
+        $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 666));
     }
 }
