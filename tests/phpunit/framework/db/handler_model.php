@@ -18,4 +18,9 @@ class HandlerModel extends Model
         'id', // int(20) not null auto_increment
         'text', // varchar(100)
     );
+
+    /**
+     * @var string
+     */
+    protected $tableName = 'handler_model';
 }

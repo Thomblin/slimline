@@ -7,6 +7,7 @@ use de\detert\sebastian\slimline\db\Model_Repository;
 use de\detert\sebastian\slimline\db\Model_Column;
 use de\detert\sebastian\slimline\db\Model_Table;
 
+require_once BASE_DIR . 'repository.php';
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
 require_once BASE_DIR . 'db' . DS . 'model' . DS . 'table.php';

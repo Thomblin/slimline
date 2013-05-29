@@ -23,6 +23,7 @@ class Handler
     {
         $this->db = new \PDO($config->dsn, $config->user, $config->password);
         $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->db->exec("SET NAMES UTF8");
     }
 
     /**
@@ -116,5 +117,28 @@ class Handler
         $model->fromArray($result[0]);
 
         return $model;
+    }
+
+    /**
+     * @param Model $model
+     */
+    public function saveModel(Model $model)
+    {
+        $data  = $model->toArray();
+        $table = $model->getTableName();
+
+        $columns = "`" . implode('`,`', array_keys($data)) . "`";
+        $values  = implode(', ', array_fill(0, count($data), '?'));
+
+        $update = "`" . implode('` = ?, `', array_keys($data)) . "` = ?";
+
+        $params = array_merge(array_values($data), array_values($data));
+
+        $sql = "INSERT INTO `$table`
+            ($columns) VALUES
+            ($values)
+            ON DUPLICATE KEY UPDATE $update";
+
+        $this->query($sql, $params);
     }
 }

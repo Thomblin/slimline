@@ -114,4 +114,37 @@ class DbHandlerTest extends Helper\TestCase
 
         $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 666));
     }
+
+    public function testShouldSaveModel()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100), PRIMARY KEY (`id`))';
+        $this->handler->query($sql);
+
+        $expected = new HandlerModel();
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'one',
+            )
+        );
+
+        $this->handler->saveModel($expected);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $this->assertEquals($expected->toArray(), $actual->toArray());
+
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'second',
+            )
+        );
+
+        $this->handler->saveModel($expected);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $this->assertEquals($expected->toArray(), $actual->toArray());
+    }
 }

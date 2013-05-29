@@ -66,6 +66,7 @@ class Model_Create
 
             $generatedTemplate = file_get_contents($templateDir . 'generated');
             $generatedTemplate = str_replace('%name%', $className, $generatedTemplate);
+            $generatedTemplate = str_replace('%tableName%', $tableName, $generatedTemplate);
             $generatedTemplate = str_replace('%namespace%', $namespace, $generatedTemplate);
             $generatedTemplate = str_replace('%methods%', implode(PHP_EOL, $methods), $generatedTemplate);
             $generatedTemplate = str_replace('%columns%', implode(PHP_EOL."        ", $columns), $generatedTemplate);

@@ -20,6 +20,11 @@ class Model
     protected $data;
 
     /**
+     * @var string
+     */
+    protected $tableName;
+
+    /**
      * @param string $key
      *
      * @return $this
@@ -56,5 +61,10 @@ class Model
     public function toArray()
     {
         return $this->data;
+    }
+
+    public function getTableName()
+    {
+        return $this->tableName;
     }
 }

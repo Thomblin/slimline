@@ -1,6 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline\db\modelgenerated;
 
+use de\detert\sebastian\slimline\db\Model;
+
 /**
  * @author sebastian.detert <github@elygor.de>
  * @date 28.05.13
@@ -16,6 +18,11 @@ class Foo extends Model
         'id', // int(20) not null auto_increment
         'text', // varchar(100) just a text
     );
+
+    /**
+     * @var string
+     */
+    protected $tableName = 'foo';
 
     /**
      * @param int $id int(20) not null auto_increment

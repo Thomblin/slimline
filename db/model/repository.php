@@ -1,14 +1,15 @@
 <?php
+namespace de\detert\sebastian\slimline\db;
+
+use de\detert\sebastian\slimline\Repository as SlimlineRepository;
+
 /**
  * @author sebastian.detert <github@elygor.de>
  * @date 26.05.13
  * @time 22:28
  * @license property of Sebastian Detert
  */
-
-namespace de\detert\sebastian\slimline\db;
-
-class Model_Repository
+class Model_Repository extends SlimlineRepository
 {
     protected $db;
 
