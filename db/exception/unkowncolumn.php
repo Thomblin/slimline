@@ -9,6 +9,6 @@ namespace de\detert\sebastian\slimline\db;
  * @time 09:58
  * @license property of Sebastian Detert
  */
-class Exception_NotFound extends \Exception
+class Exception_UnkownColumn extends \Exception
 {
 }

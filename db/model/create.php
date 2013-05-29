@@ -39,40 +39,47 @@ class Model_Create
     {
         $tables = $this->repository->getAllTables();
 
+        $templateDir = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
+        $methodTemplate    = file_get_contents($templateDir . 'methods');
+
         /** @var Model_Table $table */
         foreach ( $tables as $tableName => $table ) {
-            $columns = '';
+            $methods = array();
+            $columns = array();
 
             /** @var Model_Column $column */
             foreach ( $table->columns as $name => $column ) {
 
-                $columns .= "
-    /**
-     * {$column->getDescription()}
-     *
-     * @var {$column->data_type}
-     */
-    public \$$name;";
+                $ucColumn = ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $name ) ) );
 
+                $method = $methodTemplate;
+                $method = str_replace('%type%', $column->data_type, $method);
+                $method = str_replace('%column%', $name, $method);
+                $method = str_replace('%comment%', $column->getDescription(), $method);
+                $method = str_replace('%uc_column%', $ucColumn, $method);
+
+                $methods[] = $method;
+                $columns[] = "'" . $name . "', // " . $column->getDescription();
             }
 
             $className = ucfirst( preg_replace( '/(_.?)/e', "strtoupper('$1')", strtolower( $tableName ) ) );
 
-            $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_generated');
-            $template = str_replace('%name%', $className, $template);
-            $template = str_replace('%namespace%', $namespace, $template);
-            $template = str_replace('%columns%', $columns, $template);
+            $generatedTemplate = file_get_contents($templateDir . 'generated');
+            $generatedTemplate = str_replace('%name%', $className, $generatedTemplate);
+            $generatedTemplate = str_replace('%namespace%', $namespace, $generatedTemplate);
+            $generatedTemplate = str_replace('%methods%', implode(PHP_EOL, $methods), $generatedTemplate);
+            $generatedTemplate = str_replace('%columns%', implode(PHP_EOL."        ", $columns), $generatedTemplate);
 
             $filename = $dir . 'generated' . DS . str_replace('_', DS, $tableName) . '.php';
-            $this->filePutContents($filename, $template);
+            $this->filePutContents($filename, $generatedTemplate);
 
             $filename = $dir . DS . str_replace('_', DS, $tableName) . '.php';
             if ( !file_exists($filename) ) {
-                $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'template_extend');
-                $template = str_replace('%name%', $className, $template);
-                $template = str_replace('%namespace%', $namespace, $template);
+                $extendedTemplate = file_get_contents($templateDir . 'extended');
+                $extendedTemplate = str_replace('%name%', $className, $extendedTemplate);
+                $extendedTemplate = str_replace('%namespace%', $namespace, $extendedTemplate);
 
-                $this->filePutContents($filename, $template);
+                $this->filePutContents($filename, $extendedTemplate);
             }
         }
     }

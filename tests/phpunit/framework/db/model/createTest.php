@@ -59,8 +59,18 @@ class DbModelCreateTest extends Helper\TestCase
         $id->column_comment = '';
         $id->character_maximum_length = null;
 
+
+        $text = new Model_Column();
+        $text->data_type = 'varchar';
+        $text->column_type = 'varchar(100)';
+        $text->extra = null;
+        $text->is_nullable = true;
+        $text->column_comment = 'just a text';
+        $text->character_maximum_length = null;
+
         $table = new Model_Table();
         $table->columns['id'] = $id;
+        $table->columns['text'] = $text;
 
         $tables['foo'] = $table;
 
@@ -73,8 +83,8 @@ class DbModelCreateTest extends Helper\TestCase
         $dir = __DIR__ . DS . 'tmp';
         $dirGenerated = __DIR__ . DS . 'tmpgenerated';
         array_map('unlink', glob($dirGenerated . DS . '*'));
+        array_map('unlink', glob($dir . DS . '*'));
 
-        unlink($dir . DS . 'foo.php');
         $modelCreate->createModels($dir);
 
         $this->assertTrue(file_exists($dirGenerated . DS . 'foo.php'));

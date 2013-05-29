@@ -4,6 +4,7 @@ namespace de\detert\sebastian\slimline\Tests;
 use de\detert\sebastian\slimline\db\Handler;
 use de\detert\sebastian\slimline\db\model\HandlerModel;
 
+require_once BASE_DIR . 'db' . DS . 'model.php';
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
 require_once BASE_DIR . 'db' . DS . 'exception' . DS . 'notfound.php';
@@ -89,8 +90,12 @@ class DbHandlerTest extends Helper\TestCase
         $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
 
         $expected = new HandlerModel();
-        $expected->id = 1;
-        $expected->text = 'one';
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'one',
+            )
+        );
 
         $this->assertEquals(
             $expected,

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>assert.php</title>
+    <title>unkowncolumn.php</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="container.css">
     <script type="text/javascript" src="yahoo-dom-event.js"></script>
@@ -12,7 +12,7 @@
 
   <body class="yui-skin-sam">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td class="title">assert.php</td></tr>
+      <tr><td class="title">unkowncolumn.php</td></tr>
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
 
       <tr>
@@ -20,7 +20,7 @@
           <table cellpadding="1" border="0" width="100%">
             <tr>
               <td class="headerItem" width="20%">Current file:</td>
-              <td class="headerValue" width="80%"><a href="index.html">D:\server\rss\external\slimline</a>/<a href="exception.html">exception</a>/<a href="exception_assert.php.html">assert.php</a></td>
+              <td class="headerValue" width="80%"><a href="index.html">D:\server\rss\external\slimline</a>/<a href="db.html">db</a>/<a href="db_exception.html">exception</a>/<a href="db_exception_unkowncolumn.php.html">unkowncolumn.php</a></td>
             </tr>
             <tr>
               <td class="legendItem" width="20%">Legend:</td>
@@ -80,7 +80,7 @@
         </tr>
 
         <tr>
-          <td class="coverDirectory">Assert</td>
+          <td class="coverDirectory">Exception_UnkownColumn</td>
           <td class="coverBar">
              <div class="coverBarOutline" title="100.00%">
                 <div class="size chameleon"  style="width:100%" title="100.00%"></div>
@@ -118,21 +118,19 @@
       <tr>
         <td>
 <pre class="source">
-<span class="lineNum" id="container1"><a name="1"></a><a href="#1" id="line1">       1</a> </span>                : <span class="default">&lt;?php</span>                                            
-<span class="lineNum" id="container2"><a name="2"></a><a href="#2" id="line2">       2</a> </span>                : <span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">de</span><span class="default">\</span><span class="default">detert</span><span class="default">\</span><span class="default">sebastian</span><span class="default">\</span><span class="default">slimline</span><span class="default">\</span><span class="default">Exception</span><span class="keyword">;</span>
-<span class="lineNum" id="container3"><a name="3"></a><a href="#3" id="line3">       3</a> </span>                :                                                  
-<span class="lineNum" id="container4"><a name="4"></a><a href="#4" id="line4">       4</a> </span>                : <span class="comment">/**</span>                                              
-<span class="lineNum" id="container5"><a name="5"></a><a href="#5" id="line5">       5</a> </span>                : <span class="comment">&nbsp;*&nbsp;Assert&nbsp;is&nbsp;thrown&nbsp;if&nbsp;an&nbsp;assert&nbsp;fails</span>           
-<span class="lineNum" id="container6"><a name="6"></a><a href="#6" id="line6">       6</a> </span>                : <span class="comment">&nbsp;*</span>                                               
-<span class="lineNum" id="container7"><a name="7"></a><a href="#7" id="line7">       7</a> </span>                : <span class="comment">&nbsp;*&nbsp;@author&nbsp;sebastian.detert&nbsp;&lt;github@elygor.de&gt;</span>   
-<span class="lineNum" id="container8"><a name="8"></a><a href="#8" id="line8">       8</a> </span>                : <span class="comment">&nbsp;*&nbsp;@date&nbsp;13.12.12</span>                                
-<span class="lineNum" id="container9"><a name="9"></a><a href="#9" id="line9">       9</a> </span>                : <span class="comment">&nbsp;*&nbsp;@time&nbsp;23:51</span>                                   
-<span class="lineNum" id="container10"><a name="10"></a><a href="#10" id="line10">      10</a> </span>                : <span class="comment">&nbsp;*&nbsp;@license&nbsp;property&nbsp;of&nbsp;Sebastian&nbsp;Detert</span>         
-<span class="lineNum" id="container11"><a name="11"></a><a href="#11" id="line11">      11</a> </span>                : <span class="comment">&nbsp;*/</span>                                              
-<span class="lineNum" id="container12"><a name="12"></a><a href="#12" id="line12">      12</a> </span>                : <span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">Assert</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Exception</span>                  
-<span class="lineNum" id="container13"><a name="13"></a><a href="#13" id="line13">      13</a> </span><span class="lineNoCov">              0 : <span class="keyword">{</span>                                                </span>
-<span class="lineNum" id="container14"><a name="14"></a><a href="#14" id="line14">      14</a> </span>                :                                                  
-<span class="lineNum" id="container15"><a name="15"></a><a href="#15" id="line15">      15</a> </span>                : <span class="keyword">}</span>                                                
+<span class="lineNum" id="container1"><a name="1"></a><a href="#1" id="line1">       1</a> </span>                : <span class="default">&lt;?php</span>                                          
+<span class="lineNum" id="container2"><a name="2"></a><a href="#2" id="line2">       2</a> </span>                : <span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">de</span><span class="default">\</span><span class="default">detert</span><span class="default">\</span><span class="default">sebastian</span><span class="default">\</span><span class="default">slimline</span><span class="default">\</span><span class="default">db</span><span class="keyword">;</span>     
+<span class="lineNum" id="container3"><a name="3"></a><a href="#3" id="line3">       3</a> </span>                :                                                
+<span class="lineNum" id="container4"><a name="4"></a><a href="#4" id="line4">       4</a> </span>                : <span class="comment">/**</span>                                            
+<span class="lineNum" id="container5"><a name="5"></a><a href="#5" id="line5">       5</a> </span>                : <span class="comment">&nbsp;*&nbsp;database&nbsp;handler&nbsp;for&nbsp;sql&nbsp;queries&nbsp;and&nbsp;more</span>   
+<span class="lineNum" id="container6"><a name="6"></a><a href="#6" id="line6">       6</a> </span>                : <span class="comment">&nbsp;*</span>                                             
+<span class="lineNum" id="container7"><a name="7"></a><a href="#7" id="line7">       7</a> </span>                : <span class="comment">&nbsp;*&nbsp;@author&nbsp;sebastian.detert&nbsp;&lt;github@elygor.de&gt;</span> 
+<span class="lineNum" id="container8"><a name="8"></a><a href="#8" id="line8">       8</a> </span>                : <span class="comment">&nbsp;*&nbsp;@date&nbsp;25.05.13</span>                              
+<span class="lineNum" id="container9"><a name="9"></a><a href="#9" id="line9">       9</a> </span>                : <span class="comment">&nbsp;*&nbsp;@time&nbsp;09:58</span>                                 
+<span class="lineNum" id="container10"><a name="10"></a><a href="#10" id="line10">      10</a> </span>                : <span class="comment">&nbsp;*&nbsp;@license&nbsp;property&nbsp;of&nbsp;Sebastian&nbsp;Detert</span>       
+<span class="lineNum" id="container11"><a name="11"></a><a href="#11" id="line11">      11</a> </span>                : <span class="comment">&nbsp;*/</span>                                            
+<span class="lineNum" id="container12"><a name="12"></a><a href="#12" id="line12">      12</a> </span>                : <span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">Exception_UnkownColumn</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Exception</span>
+<span class="lineNum" id="container13"><a name="13"></a><a href="#13" id="line13">      13</a> </span><span class="lineNoCov">              0 : <span class="keyword">{</span>                                              </span>
 
 </pre>
         </td>

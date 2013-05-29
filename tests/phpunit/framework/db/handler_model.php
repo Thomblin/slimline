@@ -7,20 +7,15 @@
  */
 
 namespace de\detert\sebastian\slimline\db\model;
+use de\detert\sebastian\slimline\db\Model as Model;
 
-class HandlerModel
+class HandlerModel extends Model
 {
     /**
-     * int(20) not null auto_increment
-     *
-     * @var int
+     * @var array
      */
-    public $id;
-
-    /**
-     * varchar(100)
-     *
-     * @var varchar
-     */
-    public $text;
+    protected $columns = array(
+        'id', // int(20) not null auto_increment
+        'text', // varchar(100)
+    );
 }

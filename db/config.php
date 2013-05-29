@@ -10,6 +10,7 @@ namespace de\detert\sebastian\slimline\db;
  * @license property of Sebastian Detert
  */
 class Config {
+    public $dbName;
     public $dsn;
     public $user;
     public $password;

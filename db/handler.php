@@ -111,11 +111,9 @@ class Handler
             throw new Exception_Notfound("model $class not found with " . print_r($where, true));
         }
 
+        /** @var Model $model */
         $model = new $class();
-
-        foreach ( $result[0] as $column => $value ) {
-            $model->$column = $value;
-        }
+        $model->fromArray($result[0]);
 
         return $model;
     }

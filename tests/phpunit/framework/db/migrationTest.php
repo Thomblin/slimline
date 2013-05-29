@@ -38,11 +38,16 @@ class DbMigrationTest extends Helper\TestCase
     {
         $this->handler = new Handler($this->dbConfig);
 
-        $sql = 'DROP TABLE IF EXISTS `foo`';
-        $this->handler->query($sql);
+        $sql = "SELECT
+                CONCAT('DROP TABLE IF EXISTS `', table_name, '`;') AS query
+            FROM
+                information_schema.tables
+            WHERE table_schema = ?";
+        $queries = $this->handler->fetchAll($sql, array($this->dbConfig->dbName));
 
-        $sql = 'DROP TABLE IF EXISTS `migration_version`';
-        $this->handler->query($sql);
+        foreach ( $queries as $sql ) {
+            $this->handler->query($sql['query']);
+        }
     }
 
     /**
