@@ -25,14 +25,6 @@ class Model_Create
     }
 
     /**
-     * @param callback $callback
-     */
-    public function setClassNameCallback($callback)
-    {
-        $this->classNameCallback = $callback;
-    }
-
-    /**
      * @param string $dir
      */
     public function createModels($dir, $namespace = 'de\detert\sebastian\slimline\db\model')

@@ -131,6 +131,7 @@ class DbMigrationTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
      * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      * @covers de\detert\sebastian\slimline\db\Migration::upAction
+     * @covers de\detert\sebastian\slimline\db\Migration_Statement::__construct
      */
     public function testShouldNotPerformMigration1()
     {
@@ -190,5 +191,15 @@ class DbMigrationTest extends Helper\TestCase
     {
         $this->initMigrationClass(__DIR__ . DS . 'migration' . DS . 'wrong_class');
         $this->migration->update();
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::__construct
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::getHandler
+     */
+    public function testShouldReturnHandler()
+    {
+        $repository = new Migration_Repository($this->handler);
+        $this->assertSame($this->handler, $repository->getHandler());
     }
 }

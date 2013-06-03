@@ -1,6 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline\db;
 
+use de\detert\sebastian\slimline\Exception\Pdo;
+
 /**
  * database handler for sql queries and more
  *
@@ -45,10 +47,29 @@ class Handler
      */
     private function prepareAndExecute($sql, array $params = array())
     {
-        $statement = $this->db->prepare($sql);
-        $statement->execute($params);
+        try {
+            $statement = $this->db->prepare($sql);
+            $statement->execute($params);
+        } catch(\PDOException $e) {
+            throw new Pdo(
+                $e->getMessage() . PHP_EOL .
+                $sql . PHP_EOL .
+                print_r($params, true) . PHP_EOL
+            );
+        }
 
         return $statement;
+    }
+
+    /**
+     * @param string $sql
+     * @param array  $params
+     *
+     * @return array
+     */
+    public function fetch($sql, array $params = array())
+    {
+        return $this->prepareAndExecute($sql, $params)->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**
@@ -85,36 +106,25 @@ class Handler
      */
     public function loadModel($class, array $where)
     {
-        $table = strtolower(
-            preg_replace(
-                '/(?<=\\w)(?=[A-Z])/',
-                "_$1",
-                substr($class, strrpos($class, '\\') + 1)
-            )
-        );
+        /** @var Model $model */
+        $model = new $class();
+        $table = $model->getTableName();
 
         $sql = "SELECT
                 *
             FROM
                 `$table`
-            WHERE ";
+            WHERE
+                `" . implode('` = ? AND `', array_keys($where)) . "` = ?
+            LIMIT 1";
 
-        $params = array();
-        foreach ( $where as $column => $value ) {
-            $params[] = " `$column` = ? ";
-        }
+        $result = $this->fetch($sql, array_values($where));
 
-        $sql .= implode(' AND ', $params)." LIMIT 1";
-
-        $result = $this->fetchAll($sql, array_values($where));
-
-        if ( empty($result[0]) ) {
+        if ( empty($result) ) {
             throw new Exception_Notfound("model $class not found with " . print_r($where, true));
         }
 
-        /** @var Model $model */
-        $model = new $class();
-        $model->fromArray($result[0]);
+        $model->fromArray($result);
 
         return $model;
     }
@@ -140,5 +150,36 @@ class Handler
             ON DUPLICATE KEY UPDATE $update";
 
         $this->query($sql, $params);
+    }
+
+    /**
+     * @param string $class
+     * @param array  $where
+     */
+    public function loadAllModels($class, array $where)
+    {
+        $models = array();
+
+        /** @var Model $model */
+        $model = new $class();
+        $table = $model->getTableName();
+
+        $sql = "SELECT
+                *
+            FROM
+                `$table`
+            " . (empty($where)
+                ? ""
+                : "WHERE `" . implode('` = ? AND `', array_keys($where)) . "` = ?");
+
+        $result = $this->fetchAll($sql, array_values($where));
+
+        foreach ( $result as $row ) {
+            $model = new $class();
+            $model->fromArray($row);
+            $models[] = $model;
+        }
+
+        return $models;
     }
 }

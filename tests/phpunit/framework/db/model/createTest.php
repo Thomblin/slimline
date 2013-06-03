@@ -48,6 +48,12 @@ class DbModelCreateTest extends Helper\TestCase
         );
     }
 
+    /**
+     * @covers de\detert\sebastian\slimline\db\Model_Create::__construct
+     * @covers de\detert\sebastian\slimline\db\Model_Create::createModels
+     * @covers de\detert\sebastian\slimline\db\Model_Create::filePutContents
+     * @covers de\detert\sebastian\slimline\db\Model_Column::getDescription
+     */
     public function testShouldReturnAllTables()
     {
         $tables = array();
@@ -59,7 +65,6 @@ class DbModelCreateTest extends Helper\TestCase
         $id->is_nullable = false;
         $id->column_comment = '';
         $id->character_maximum_length = null;
-
 
         $text = new Model_Column();
         $text->data_type = 'varchar';
@@ -83,8 +88,12 @@ class DbModelCreateTest extends Helper\TestCase
 
         $dir = __DIR__ . DS . 'tmp';
         $dirGenerated = __DIR__ . DS . 'tmpgenerated';
+
         array_map('unlink', glob($dirGenerated . DS . '*'));
         array_map('unlink', glob($dir . DS . '*'));
+
+        if ( file_exists($dir) ) rmdir($dir);
+        if ( file_exists($dirGenerated) ) rmdir($dirGenerated);
 
         $modelCreate->createModels($dir);
 

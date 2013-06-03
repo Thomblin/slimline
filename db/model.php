@@ -20,6 +20,11 @@ class Model
     protected $data;
 
     /**
+     * @var array
+     */
+    protected $debugData;
+
+    /**
      * @var string
      */
     protected $tableName;
@@ -66,5 +71,30 @@ class Model
     public function getTableName()
     {
         return $this->tableName;
+    }
+
+    /**
+     * @return $this
+     */
+    public function fromArrayWithDebug($array)
+    {
+        foreach ( $array as $key => $value ) {
+            try {
+                $this->validateColumn($key);
+                $this->data[$key] = $value;
+            } catch(Exception_UnkownColumn $e) {
+                $this->debugData[$key] = $value;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDebugData()
+    {
+        return $this->debugData;
     }
 }

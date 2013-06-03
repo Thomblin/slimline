@@ -30,7 +30,7 @@ class DbModelRepositoryTest extends Helper\TestCase
     private $repository;
 
     /**
-     * @covers de\detert\sebastian\slimline\db\Handler::__construct
+     * @covers de\detert\sebastian\slimline\db\Model_Repository::__construct
      */
     public function setUp()
     {
@@ -44,7 +44,9 @@ class DbModelRepositoryTest extends Helper\TestCase
         $sql = 'DROP TABLE IF EXISTS `misc`';
         $this->handler->query($sql);
     }
-
+    /**
+     * @covers de\detert\sebastian\slimline\db\Model_Repository::getAllTables
+     */
     public function testShouldReturnAllTables()
     {
         $sql = 'CREATE TABLE `foo` (

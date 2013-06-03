@@ -6,6 +6,9 @@ use de\detert\sebastian\slimline\Tests\Helper\Exception;
 
 require_once BASE_DIR . 'render.php';
 
+require_once BASE_DIR . DS . 'tests' . DS . 'helper' . DS . 'exception.php';
+require_once BASE_DIR . DS . 'exception' . DS . 'error.php';
+
 /**
  * @author sebastian.detert <github@elygor.de>
  * @date 13.01.13
@@ -34,9 +37,9 @@ class RenderTest extends \PHPUnit_Framework_TestCase
             array('getTemplateFolder')
         );
 
-        $this->render->expects($this->once())
+        $this->render->expects($this->any())
             ->method('getTemplateFolder')
-            ->will($this->returnValue('helper'));
+            ->will($this->returnValue('helper' . DS . 'templates'));
     }
 
     /**
@@ -84,5 +87,27 @@ class RenderTest extends \PHPUnit_Framework_TestCase
     public function testThatArraysAreExtracted()
     {
         $this->render->render('throw_exception.php', array('arrayMessage' => 'array message'));
+    }
+
+    /**
+     * @expectedException de\detert\sebastian\slimline\Exception\Error
+     * @expectedExceptionMessage $content['content'] should not be used
+     *
+     * @covers de\detert\sebastian\slimline\Render::render
+     */
+    public function testThatRenderFailsIfArrayContainsVariableNamedContent()
+    {
+        $this->render->render('empty.php', array('content' => 'any'));
+    }
+
+    /**
+     * @expectedException de\detert\sebastian\slimline\Exception\Error
+     * @expectedExceptionMessage $content->content should not be used
+     *
+     * @covers de\detert\sebastian\slimline\Render::render
+     */
+    public function testThatRenderFailsIfObjectContainsVariableNamedContent()
+    {
+        $this->render->render('empty.php', (object) array('content' => 'any'));
     }
 }
