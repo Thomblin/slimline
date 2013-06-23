@@ -17,7 +17,7 @@ class Request
     /**
      * @var array
      */
-    private $data;
+    protected $data;
 
     /**
      *
@@ -31,7 +31,7 @@ class Request
     /**
      *
      */
-    private function validateSuperglobals()
+    protected function validateSuperglobals()
     {
         $this->data['SERVER'] = $this->normalize($_SERVER);
         $this->data['POST'] = $this->normalize($_POST);
@@ -43,7 +43,7 @@ class Request
      * @param mixed $value
      * @return array
      */
-    private function normalize($value)
+    protected function normalize($value)
     {
         return is_array($value)
             ? array_map(__METHOD__, array_change_key_case($value, CASE_LOWER))
@@ -53,7 +53,7 @@ class Request
     /**
      *
      */
-    private function unsetSuperglobals()
+    protected function unsetSuperglobals()
     {
         $_SERVER = array();
         $_POST = array();

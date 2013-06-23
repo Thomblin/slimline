@@ -35,6 +35,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
                 ),
                 'call' => array('de\detert\sebastian\slimline\Render_Plain', 'render'),
             ),
+            'timezone' => 'Europe/Berlin'
         );
 
         $this->assertEquals($expected, $actual);

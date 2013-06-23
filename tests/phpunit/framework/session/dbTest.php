@@ -18,7 +18,7 @@ require_once BASE_DIR . 'session' . DS . 'db.php';
  * @time 14:23
  * @license property of Sebastian Detert
  */
-class DbHandlerTest extends Helper\TestCase
+class SessionDbTest extends Helper\TestCase
 {
     /**
      * @var Handler
