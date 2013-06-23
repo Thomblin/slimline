@@ -1,6 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline;
 
+use de\detert\sebastian\slimline\Pool;
+
 /**
  * class Config contains the most important specifications for your application, which will maybe change between
  * production, test and development versions
@@ -56,8 +58,10 @@ class Config
     public $timezone = 'Europe/Berlin';
     /**
      * this method is called after autoloader was registered
+     *
+     * @param Pool $pool
      */
-    public function init()
+    public function init(Pool $pool)
     {
     }
 }
