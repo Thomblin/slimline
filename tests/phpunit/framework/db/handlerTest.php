@@ -2,9 +2,13 @@
 namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\db\Handler;
+use de\detert\sebastian\slimline\db\model\HandlerModel;
 
+require_once BASE_DIR . 'db' . DS . 'model.php';
 require_once BASE_DIR . 'db' . DS . 'config.php';
 require_once BASE_DIR . 'db' . DS . 'handler.php';
+require_once BASE_DIR . 'db' . DS . 'exception' . DS . 'notfound.php';
+require_once 'handler_model.php';
 
 /**
  * @author sebastian.detert <github@elygor.de>
@@ -28,6 +32,9 @@ class DbHandlerTest extends Helper\TestCase
         $this->handler = new Handler($this->dbConfig);
 
         $sql = 'DROP TABLE IF EXISTS `foo`';
+        $this->handler->query($sql);
+
+        $sql = 'DROP TABLE IF EXISTS `handler_model`';
         $this->handler->query($sql);
     }
 
@@ -53,6 +60,22 @@ class DbHandlerTest extends Helper\TestCase
     }
 
     /**
+     * @covers de\detert\sebastian\slimline\db\Handler::fetch
+     */
+    public function testShouldFetchOneRow()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `foo` (`id` INT(20))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `foo` VALUES (?), (?)';
+        $params = array(1, 2);
+        $this->handler->query($sql, $params);
+
+        $expected = array('id' => 1);
+        $this->assertEquals($expected, $this->handler->fetch("SELECT * from `foo` ORDER BY `id` ASC"));
+    }
+
+    /**
      * @covers de\detert\sebastian\slimline\db\Handler::fetchIndexedBy
      */
     public function testShouldReturnRowsByIndex()
@@ -69,5 +92,119 @@ class DbHandlerTest extends Helper\TestCase
             'two' => array('id' => 2, 'misc' => 'two'),
         );
         $this->assertEquals($expected, $this->handler->fetchIndexedBy("SELECT * from `foo`", 'misc'));
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Handler::loadModel
+     */
+    public function testShouldReturnModel()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `handler_model` VALUES (?, ?), (?, ?)';
+        $params = array(1, 'one', 2, 'two');
+        $this->handler->query($sql, $params);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $expected = new HandlerModel();
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'one',
+            )
+        );
+
+        $this->assertEquals(
+            $expected,
+            $actual,
+            "expected\n" . print_r($expected, true) . "\actual\n" . print_r($actual, true)
+        );
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Handler::loadModel
+     *
+     * @expectedException de\detert\sebastian\slimline\db\Exception_Notfound
+     */
+    public function testShouldThrowExceptionIfModelNotFoundInDb()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100))';
+        $this->handler->query($sql);
+
+        $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 666));
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Handler::saveModel
+     */
+    public function testShouldSaveModel()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100), PRIMARY KEY (`id`))';
+        $this->handler->query($sql);
+
+        $expected = new HandlerModel();
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'one',
+            )
+        );
+
+        $this->handler->saveModel($expected);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $this->assertEquals($expected->toArray(), $actual->toArray());
+
+        $expected->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'second',
+            )
+        );
+
+        $this->handler->saveModel($expected);
+
+        $actual = $this->handler->loadModel('de\detert\sebastian\slimline\db\model\HandlerModel', array('id' => 1));
+
+        $this->assertEquals($expected->toArray(), $actual->toArray());
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Handler::loadAllModels
+     */
+    public function testShouldReturnAllModels()
+    {
+        $sql = 'CREATE TABLE IF NOT EXISTS `handler_model` (`id` INT(20), `text` VARCHAR(100))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `handler_model` VALUES (?, ?), (?, ?)';
+        $params = array(1, 'one', 2, 'two');
+        $this->handler->query($sql, $params);
+
+        $actual = $this->handler->loadAllModels('de\detert\sebastian\slimline\db\model\HandlerModel', array());
+
+        $model1 = new HandlerModel();
+        $model1->fromArray(
+            array(
+                'id' => 1,
+                'text' => 'one',
+            )
+        );
+        $model2 = new HandlerModel();
+        $model2->fromArray(
+            array(
+                'id' => 2,
+                'text' => 'two',
+            )
+        );
+
+        $this->assertEquals(
+            array($model1, $model2),
+            $actual,
+            "expected\n" . print_r(array($model1, $model2), true) . "\actual\n" . print_r($actual, true)
+        );
     }
 }

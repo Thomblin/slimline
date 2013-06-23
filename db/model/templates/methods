@@ -1,0 +1,21 @@
+
+    /**
+     * @param %type% $%column% %comment%
+     */
+    public function set%uc_column%($%column%) {
+        $this->data['%column%'] = $%column%;
+    }
+
+    /**
+     *  @return boolean
+     */
+    public function isset%uc_column%() {
+        return isset($this->data['%column%']);
+    }
+
+    /**
+     *  @return %type%
+     */
+    public function get%uc_column%() {
+        return $this->data['%column%'];
+    }

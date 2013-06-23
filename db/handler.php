@@ -1,6 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline\db;
 
+use de\detert\sebastian\slimline\Exception\Pdo;
+
 /**
  * database handler for sql queries and more
  *
@@ -23,6 +25,7 @@ class Handler
     {
         $this->db = new \PDO($config->dsn, $config->user, $config->password);
         $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->db->exec("SET NAMES UTF8");
     }
 
     /**
@@ -44,10 +47,29 @@ class Handler
      */
     private function prepareAndExecute($sql, array $params = array())
     {
-        $statement = $this->db->prepare($sql);
-        $statement->execute($params);
+        try {
+            $statement = $this->db->prepare($sql);
+            $statement->execute($params);
+        } catch(\PDOException $e) {
+            throw new Pdo(
+                $e->getMessage() . PHP_EOL .
+                $sql . PHP_EOL .
+                print_r($params, true) . PHP_EOL
+            );
+        }
 
         return $statement;
+    }
+
+    /**
+     * @param string $sql
+     * @param array  $params
+     *
+     * @return array
+     */
+    public function fetch($sql, array $params = array())
+    {
+        return $this->prepareAndExecute($sql, $params)->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**
@@ -76,5 +98,88 @@ class Handler
         }
 
         return $results;
+    }
+
+    /**
+     * @param string $class
+     * @param array  $where
+     */
+    public function loadModel($class, array $where)
+    {
+        /** @var Model $model */
+        $model = new $class();
+        $table = $model->getTableName();
+
+        $sql = "SELECT
+                *
+            FROM
+                `$table`
+            WHERE
+                `" . implode('` = ? AND `', array_keys($where)) . "` = ?
+            LIMIT 1";
+
+        $result = $this->fetch($sql, array_values($where));
+
+        if ( empty($result) ) {
+            throw new Exception_Notfound("model $class not found with " . print_r($where, true));
+        }
+
+        $model->fromArray($result);
+
+        return $model;
+    }
+
+    /**
+     * @param Model $model
+     */
+    public function saveModel(Model $model)
+    {
+        $data  = $model->toArray();
+        $table = $model->getTableName();
+
+        $columns = "`" . implode('`,`', array_keys($data)) . "`";
+        $values  = implode(', ', array_fill(0, count($data), '?'));
+
+        $update = "`" . implode('` = ?, `', array_keys($data)) . "` = ?";
+
+        $params = array_merge(array_values($data), array_values($data));
+
+        $sql = "INSERT INTO `$table`
+            ($columns) VALUES
+            ($values)
+            ON DUPLICATE KEY UPDATE $update";
+
+        $this->query($sql, $params);
+    }
+
+    /**
+     * @param string $class
+     * @param array  $where
+     */
+    public function loadAllModels($class, array $where)
+    {
+        $models = array();
+
+        /** @var Model $model */
+        $model = new $class();
+        $table = $model->getTableName();
+
+        $sql = "SELECT
+                *
+            FROM
+                `$table`
+            " . (empty($where)
+                ? ""
+                : "WHERE `" . implode('` = ? AND `', array_keys($where)) . "` = ?");
+
+        $result = $this->fetchAll($sql, array_values($where));
+
+        foreach ( $result as $row ) {
+            $model = new $class();
+            $model->fromArray($row);
+            $models[] = $model;
+        }
+
+        return $models;
     }
 }

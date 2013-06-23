@@ -38,14 +38,16 @@ class DbMigrationTest extends Helper\TestCase
     {
         $this->handler = new Handler($this->dbConfig);
 
-        $sql = 'DROP TABLE IF EXISTS `foo`';
-        $this->handler->query($sql);
+        $sql = "SELECT
+                CONCAT('DROP TABLE IF EXISTS `', table_name, '`;') AS query
+            FROM
+                information_schema.tables
+            WHERE table_schema = ?";
+        $queries = $this->handler->fetchAll($sql, array($this->dbConfig->dbName));
 
-        $sql = 'DROP TABLE IF EXISTS `migration_version`';
-        $this->handler->query($sql);
-
-        $sql = 'DROP TABLE IF EXISTS `misc`';
-        $this->handler->query($sql);
+        foreach ( $queries as $sql ) {
+            $this->handler->query($sql['query']);
+        }
     }
 
     /**
@@ -129,6 +131,7 @@ class DbMigrationTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\db\Migration::getFilesForUpdate
      * @covers de\detert\sebastian\slimline\db\Migration::getMigrationClasses
      * @covers de\detert\sebastian\slimline\db\Migration::upAction
+     * @covers de\detert\sebastian\slimline\db\Migration_Statement::__construct
      */
     public function testShouldNotPerformMigration1()
     {
@@ -188,5 +191,15 @@ class DbMigrationTest extends Helper\TestCase
     {
         $this->initMigrationClass(__DIR__ . DS . 'migration' . DS . 'wrong_class');
         $this->migration->update();
+    }
+
+    /**
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::__construct
+     * @covers de\detert\sebastian\slimline\db\Migration_Repository::getHandler
+     */
+    public function testShouldReturnHandler()
+    {
+        $repository = new Migration_Repository($this->handler);
+        $this->assertSame($this->handler, $repository->getHandler());
     }
 }

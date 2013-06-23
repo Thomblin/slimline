@@ -1,0 +1,26 @@
+<?php
+namespace %namespace%generated;
+
+use de\detert\sebastian\slimline\db\Model;
+
+/**
+ * @author sebastian.detert <github@elygor.de>
+ * @date 28.05.13
+ * @time 20:12
+ * @license property of Sebastian Detert
+ */
+class %name% extends Model
+{
+    /**
+     * @var array
+     */
+    protected $columns = array(
+        %columns%
+    );
+
+    /**
+     * @var string
+     */
+    protected $tableName = '%tableName%';
+%methods%
+}

@@ -1,0 +1,15 @@
+<?php
+namespace %namespace%;
+
+use %namespace%generated\%name% as Generated%name%;
+
+/**
+ * @author sebastian.detert <github@elygor.de>
+ * @date 28.05.13
+ * @time 20:12
+ * @license property of Sebastian Detert
+ */
+class %name% extends Generated%name%
+{
+
+}

@@ -1,6 +1,8 @@
 <?php
 namespace de\detert\sebastian\slimline;
 
+use de\detert\sebastian\slimline\Exception\Error;
+
 /**
  * class Render is used to load template files and pass values to them
  *
@@ -32,12 +34,12 @@ abstract class Render
     {
         if ( is_object($content) ) {
             if ( isset($content->content) ) {
-                trigger_error("\$content->content should not be used", E_USER_WARNING);
+                throw new Error("\$content->content should not be used");
             }
             extract(get_object_vars($content));
         } elseif ( is_array($content) ) {
-            if ( isset($content->content) ) {
-                trigger_error("\$content['content'] should not be used", E_USER_WARNING);
+            if ( isset($content['content']) ) {
+                throw new Error("\$content['content'] should not be used");
             }
             extract($content);
         }
