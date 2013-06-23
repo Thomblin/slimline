@@ -50,12 +50,14 @@ class Config
         ),
         'call' => array('de\detert\sebastian\slimline\Render_Plain', 'render'),
     );
-
+    /**
+     * @var string
+     */
+    public $timezone = 'Europe/Berlin';
     /**
      * this method is called after autoloader was registered
      */
     public function init()
     {
-
     }
 }

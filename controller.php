@@ -41,6 +41,8 @@ class Controller
 
         spl_autoload_register(array($this, 'simpleAutoload'));
 
+        date_default_timezone_set($config->timezone);
+
         $this->pool->config->init();
     }
 
