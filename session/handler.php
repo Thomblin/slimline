@@ -11,6 +11,11 @@ namespace de\detert\sebastian\slimline\session;
 interface Handler
 {
     /**
+     * @return void
+     */
+    public function startSession();
+
+    /**
      * @return bool
      */
     public function close();
