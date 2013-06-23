@@ -1,1135 +1,0 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>
-            Mayflower Code Browser - Source Code
-        </title>
-        <link rel="stylesheet" type="text/css" href="js/jquery.sidebar/css/codebrowser/sidebar.css" />
-        <link rel="stylesheet" type="text/css" href="css/global.css" />
-        <link rel="stylesheet" type="text/css" href="css/cruisecontrol.css" />
-        <link rel="stylesheet" type="text/css" href="css/review.css" />
-
-        <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.sidebar/jquery-ui-1.7.2.custom.min.js"></script>
-        <script type="text/javascript" src="js/jquery.sidebar/jquery.sidebar.js"></script>
-        <script type="text/javascript" src="js/jquery.cluetip/lib/jquery.hoverIntent.js"></script>
-        <script type="text/javascript" src="js/jquery.cluetip/lib/jquery.bgiframe.min.js"></script>
-        <script type="text/javascript" src="js/jquery.cluetip/jquery.cluetip.min.js"></script>
-
-        <script type="text/javascript" src="js/review.js"></script>
-    </head>
-    <body class="codebrowser">
-        <div class="header">
-            <a href="./index.html">Go back to index</a> |
-            <a href="http://github.com/mayflowergmbh/PHP_CodeBrowser">PHP CodeBrowser</a>
-        </div>
-        <hr/>
-        <div id="review">
-            <div class="filepath">
-                controller.php            </div>
-
-            <ol class="code"><li id="line_1" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;End of line character is invalid; expected &amp;quot;\n&amp;quot; but found &amp;quot;\r\n&amp;quot;&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;&nbsp;1&nbsp;</span><span>
-</span><span class="default">&lt;?php</span><a name="line_1"></a></li><li id="line_2" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing file doc comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;&nbsp;2&nbsp;</span><span class="keyword">namespace&nbsp;</span><span class="default">de</span><span class="keyword">\</span><span class="default">detert</span><span class="keyword">\</span><span class="default">sebastian</span><span class="keyword">\</span><span class="default">slimline</span><span class="keyword">;</span><a name="line_2"></a></li><li id="line_3" class="odd"><span class="lineNumber">&nbsp;&nbsp;3&nbsp;</span><span class="keyword">use&nbsp;</span><span class="default">de</span><span class="keyword">\</span><span class="default">detert</span><span class="keyword">\</span><span class="default">sebastian</span><span class="keyword">\</span><span class="default">slimline</span><span class="keyword">\</span><span class="default">Exception&nbsp;</span><span class="keyword">as&nbsp;</span><span class="default">Exception</span><span class="keyword">;</span><a name="line_3"></a></li><li id="line_4" class="even"><span class="lineNumber">&nbsp;&nbsp;4&nbsp;</span><span class="keyword">use&nbsp;</span><span class="default">de</span><span class="keyword">\</span><span class="default">detert</span><span class="keyword">\</span><span class="default">sebastian</span><span class="keyword">\</span><span class="default">slimline</span><span class="keyword">\</span><span class="default">Exception</span><span class="keyword">\</span><span class="default">Handler&nbsp;</span><span class="keyword">as&nbsp;</span><span class="default">ExceptionHandler</span><span class="keyword">;</span><a name="line_4"></a></li><li id="line_5" class="odd"><span class="lineNumber">&nbsp;&nbsp;5&nbsp;</span><a name="line_5"></a></li><li id="line_6" class="even"><span class="lineNumber">&nbsp;&nbsp;6&nbsp;</span><span class="comment">/**</span><a name="line_6"></a></li><li id="line_7" class="odd"><span class="lineNumber">&nbsp;&nbsp;7&nbsp;</span><span class="comment">&nbsp;*&nbsp;this&nbsp;controller&nbsp;is&nbsp;used&nbsp;to&nbsp;handle&nbsp;the&nbsp;whole&nbsp;application&nbsp;execution</span><a name="line_7"></a></li><li id="line_8" class="even"><span class="lineNumber">&nbsp;&nbsp;8&nbsp;</span><span class="comment">&nbsp;*&nbsp;it&nbsp;contains&nbsp;an&nbsp;config&nbsp;interpreter,&nbsp;autoloader,&nbsp;renderer&nbsp;and&nbsp;error&nbsp;handling</span><a name="line_8"></a></li><li id="line_9" class="odd"><span class="lineNumber">&nbsp;&nbsp;9&nbsp;</span><span class="comment">&nbsp;*</span><a name="line_9"></a></li><li id="line_10" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;@author tag comment indented incorrectly; expected 2 spaces but found 1&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;10&nbsp;</span><span class="comment">&nbsp;*&nbsp;@author&nbsp;sebastian.detert&nbsp;&lt;github@elygor.de&gt;</span><a name="line_10"></a></li><li id="line_11" class="odd"><span class="lineNumber">&nbsp;11&nbsp;</span><span class="comment">&nbsp;*&nbsp;@date&nbsp;13.12.12</span><a name="line_11"></a></li><li id="line_12" class="even"><span class="lineNumber">&nbsp;12&nbsp;</span><span class="comment">&nbsp;*&nbsp;@time&nbsp;22:05</span><a name="line_12"></a></li><li id="line_13" class="odd"><span class="lineNumber">&nbsp;13&nbsp;</span><span class="comment">&nbsp;*&nbsp;@license&nbsp;property&nbsp;of&nbsp;Sebastian&nbsp;Detert</span><a name="line_13"></a></li><li id="line_14" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @category tag in class comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @package tag in class comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @link tag in class comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues moreErrors"><span class="lineNumber">&nbsp;14&nbsp;</span><span class="comment">&nbsp;*/</span><a name="line_14"></a></li><li id="line_15" class="odd"><span class="lineNumber">&nbsp;15&nbsp;</span><span class="keyword">class&nbsp;</span><span class="default">Controller</span><a name="line_15"></a></li><li id="line_16" class="even"><span class="lineNumber">&nbsp;16&nbsp;</span><span class="keyword">{</span><a name="line_16"></a></li><li id="line_17" class="odd"><span class="lineNumber">&nbsp;17&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_17"></a></li><li id="line_18" class="even"><span class="lineNumber">&nbsp;18&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;Request</span><a name="line_18"></a></li><li id="line_19" class="odd"><span class="lineNumber">&nbsp;19&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_19"></a></li><li id="line_20" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private member variable &amp;quot;request&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;20&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;</span><span class="default">$request</span><span class="keyword">;</span><a name="line_20"></a></li><li id="line_21" class="odd"><span class="lineNumber">&nbsp;21&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_21"></a></li><li id="line_22" class="even"><span class="lineNumber">&nbsp;22&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;Response</span><a name="line_22"></a></li><li id="line_23" class="odd"><span class="lineNumber">&nbsp;23&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_23"></a></li><li id="line_24" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private member variable &amp;quot;response&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;24&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;</span><span class="default">$response</span><span class="keyword">;</span><a name="line_24"></a></li><li id="line_25" class="odd"><span class="lineNumber">&nbsp;25&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_25"></a></li><li id="line_26" class="even"><span class="lineNumber">&nbsp;26&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;Config</span><a name="line_26"></a></li><li id="line_27" class="odd"><span class="lineNumber">&nbsp;27&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_27"></a></li><li id="line_28" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private member variable &amp;quot;config&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;28&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;</span><span class="default">$config</span><span class="keyword">;</span><a name="line_28"></a></li><li id="line_29" class="odd"><span class="lineNumber">&nbsp;29&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_29"></a></li><li id="line_30" class="even"><span class="lineNumber">&nbsp;30&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;Factory</span><a name="line_30"></a></li><li id="line_31" class="odd"><span class="lineNumber">&nbsp;31&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_31"></a></li><li id="line_32" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private member variable &amp;quot;factory&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;32&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;</span><span class="default">$factory</span><span class="keyword">;</span><a name="line_32"></a></li><li id="line_33" class="odd"><span class="lineNumber">&nbsp;33&nbsp;</span><a name="line_33"></a></li><li id="line_34" class="even"><span class="lineNumber">&nbsp;34&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_34"></a></li><li id="line_35" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing comment for param &amp;quot;$config&amp;quot; at position 1&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;There must be exactly one blank line before the tags in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues moreErrors"><span class="lineNumber">&nbsp;35&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;Config&nbsp;$config</span><a name="line_35"></a></li><li id="line_36" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;The variable names for parameters $config (1) and $factory (2) do not align&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;The comments for parameters $config (1) and $factory (2) do not align&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing comment for param &amp;quot;$factory&amp;quot; at position 2&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues moreErrors"><span class="lineNumber">&nbsp;36&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;Factory&nbsp;$factory</span><a name="line_36"></a></li><li id="line_37" class="odd"><span class="lineNumber">&nbsp;37&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_37"></a></li><li id="line_38" class="even"><span class="lineNumber">&nbsp;38&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">__construct</span><span class="keyword">(</span><span class="default">Config&nbsp;$config</span><span class="keyword">,&nbsp;</span><span class="default">Factory&nbsp;$factory</span><span class="keyword">)</span><a name="line_38"></a></li><li id="line_39" class="odd"><span class="lineNumber">&nbsp;39&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_39"></a></li><li id="line_40" class="even"><span class="lineNumber">&nbsp;40&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$config</span><span class="keyword">;</span><a name="line_40"></a></li><li id="line_41" class="odd"><span class="lineNumber">&nbsp;41&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$factory</span><span class="keyword">;</span><a name="line_41"></a></li><li id="line_42" class="even"><span class="lineNumber">&nbsp;42&nbsp;</span><a name="line_42"></a></li><li id="line_43" class="odd"><span class="lineNumber">&nbsp;43&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">includes</span><span class="keyword">[</span><span class="string">'de\detert\sebastian\slimline'</span><span class="keyword">]&nbsp;=&nbsp;</span><span class="default">realpath</span><span class="keyword">(</span><span class="default">__DIR__</span><span class="keyword">);</span><a name="line_43"></a></li><li id="line_44" class="even"><span class="lineNumber">&nbsp;44&nbsp;</span><a name="line_44"></a></li><li id="line_45" class="odd"><span class="lineNumber">&nbsp;45&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">spl_autoload_register</span><span class="keyword">(array(</span><span class="default">$this</span><span class="keyword">,&nbsp;</span><span class="string">'simpleAutoload'</span><span class="keyword">));</span><a name="line_45"></a></li><li id="line_46" class="even"><span class="lineNumber">&nbsp;46&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_46"></a></li><li id="line_47" class="odd"><span class="lineNumber">&nbsp;47&nbsp;</span><a name="line_47"></a></li><li id="line_48" class="even"><span class="lineNumber">&nbsp;48&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_48"></a></li><li id="line_49" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing comment for param &amp;quot;$className&amp;quot; at position 1&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;There must be exactly one blank line before the tags in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues moreErrors"><span class="lineNumber">&nbsp;49&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;string&nbsp;$className</span><a name="line_49"></a></li><li id="line_50" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @return tag in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;50&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_50"></a></li><li id="line_51" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title Checkstyle&quot;&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;Private method name &amp;quot;Controller::simpleAutoload&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues moreErrors"><span class="lineNumber">&nbsp;51&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">simpleAutoload</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">)</span><a name="line_51"></a></li><li id="line_52" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;52&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_52"></a></li><li id="line_53" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;53&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$className&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$className</span><span class="keyword">);</span><a name="line_53"></a></li><li id="line_54" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;54&nbsp;</span><a name="line_54"></a></li><li id="line_55" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;55&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">includes&nbsp;</span><span class="keyword">as&nbsp;</span><span class="default">$namespace&nbsp;</span><span class="keyword">=&gt;&nbsp;</span><span class="default">$docroot</span><span class="keyword">)&nbsp;{</span><a name="line_55"></a></li><li id="line_56" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;56&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$path&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$className</span><span class="keyword">;</span><a name="line_56"></a></li><li id="line_57" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;57&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">$namespace&nbsp;</span><span class="keyword">===&nbsp;</span><span class="default">substr</span><span class="keyword">(</span><span class="default">$path</span><span class="keyword">,&nbsp;</span><span class="default">0</span><span class="keyword">,&nbsp;</span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$namespace</span><span class="keyword">)))&nbsp;{</span><a name="line_57"></a></li><li id="line_58" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;58&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$path&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">substr</span><span class="keyword">(</span><span class="default">$path</span><span class="keyword">,&nbsp;</span><span class="default">strlen</span><span class="keyword">(</span><span class="default">$namespace</span><span class="keyword">)&nbsp;+&nbsp;</span><span class="default">1</span><span class="keyword">);</span><a name="line_58"></a></li><li id="line_59" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;59&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_59"></a></li><li id="line_60" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title Checkstyle&quot;&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;Line exceeds 85 characters; contains 86 characters&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues moreErrors"><span class="lineNumber">&nbsp;60&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$path&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$docroot&nbsp;</span><span class="keyword">.&nbsp;</span><span class="default">DS&nbsp;</span><span class="keyword">.&nbsp;</span><span class="default">str_replace</span><span class="keyword">(array(</span><span class="string">'\\'</span><span class="keyword">,&nbsp;</span><span class="string">'_'</span><span class="keyword">),&nbsp;</span><span class="default">DS</span><span class="keyword">,&nbsp;</span><span class="default">$path</span><span class="keyword">)&nbsp;.&nbsp;</span><span class="string">'.php'</span><span class="keyword">;</span><a name="line_60"></a></li><li id="line_61" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;61&nbsp;</span><a name="line_61"></a></li><li id="line_62" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;62&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">file_exists</span><span class="keyword">(</span><span class="default">$path</span><span class="keyword">))&nbsp;{</span><a name="line_62"></a></li><li id="line_63" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;63&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include_once&nbsp;</span><span class="default">$path</span><span class="keyword">;</span><a name="line_63"></a></li><li id="line_64" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;64&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_64"></a></li><li id="line_65" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="odd hasIssues PMD"><span class="lineNumber">&nbsp;65&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_65"></a></li><li id="line_66" title="|
-                        &lt;div class=&quot;tooltip&quot;&gt;
-                            &lt;div class=&quot;title PMD&quot;&gt;PMD&lt;/div&gt;
-                            &lt;div class=&quot;text&quot;&gt;
-      Avoid unused private methods such as 'simpleAutoload'.
-    &lt;/div&gt;
-                        &lt;/div&gt;
-                        " class="even hasIssues PMD"><span class="lineNumber">&nbsp;66&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_66"></a></li><li id="line_67" class="odd"><span class="lineNumber">&nbsp;67&nbsp;</span><a name="line_67"></a></li><li id="line_68" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Function doc comment is empty&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;68&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_68"></a></li><li id="line_69" class="odd"><span class="lineNumber">&nbsp;69&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><a name="line_69"></a></li><li id="line_70" class="even"><span class="lineNumber">&nbsp;70&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_70"></a></li><li id="line_71" class="odd"><span class="lineNumber">&nbsp;71&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public&nbsp;function&nbsp;</span><span class="default">run</span><span class="keyword">()</span><a name="line_71"></a></li><li id="line_72" class="even"><span class="lineNumber">&nbsp;72&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_72"></a></li><li id="line_73" class="odd"><span class="lineNumber">&nbsp;73&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{</span><a name="line_73"></a></li><li id="line_74" class="even"><span class="lineNumber">&nbsp;74&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">setHandlers</span><span class="keyword">();</span><a name="line_74"></a></li><li id="line_75" class="odd"><span class="lineNumber">&nbsp;75&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">setRequest</span><span class="keyword">();</span><a name="line_75"></a></li><li id="line_76" class="even"><span class="lineNumber">&nbsp;76&nbsp;</span><a name="line_76"></a></li><li id="line_77" class="odd"><span class="lineNumber">&nbsp;77&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$rules&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getRewriteRules</span><span class="keyword">();</span><a name="line_77"></a></li><li id="line_78" class="even"><span class="lineNumber">&nbsp;78&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">setResponse</span><span class="keyword">(</span><span class="default">$rules</span><span class="keyword">[</span><span class="string">'callbacks'</span><span class="keyword">]);</span><a name="line_78"></a></li><li id="line_79" class="odd"><span class="lineNumber">&nbsp;79&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">render</span><span class="keyword">(</span><span class="default">$rules</span><span class="keyword">[</span><span class="string">'render'</span><span class="keyword">]);</span><a name="line_79"></a></li><li id="line_80" class="even"><span class="lineNumber">&nbsp;80&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(\</span><span class="default">Exception&nbsp;$e</span><span class="keyword">)&nbsp;{</span><a name="line_80"></a></li><li id="line_81" class="odd"><span class="lineNumber">&nbsp;81&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$e</span><span class="keyword">-&gt;</span><span class="default">getMessage</span><span class="keyword">());</span><a name="line_81"></a></li><li id="line_82" class="even"><span class="lineNumber">&nbsp;82&nbsp;</span><a name="line_82"></a></li><li id="line_83" class="odd"><span class="lineNumber">&nbsp;83&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">response</span><span class="keyword">-&gt;</span><span class="default">exception&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$e</span><span class="keyword">;</span><a name="line_83"></a></li><li id="line_84" class="even"><span class="lineNumber">&nbsp;84&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">render</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">renderError</span><span class="keyword">);</span><a name="line_84"></a></li><li id="line_85" class="odd"><span class="lineNumber">&nbsp;85&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_85"></a></li><li id="line_86" class="even"><span class="lineNumber">&nbsp;86&nbsp;</span><a name="line_86"></a></li><li id="line_87" class="odd"><span class="lineNumber">&nbsp;87&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_87"></a></li><li id="line_88" class="even"><span class="lineNumber">&nbsp;88&nbsp;</span><a name="line_88"></a></li><li id="line_89" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Function doc comment is empty&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">&nbsp;89&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_89"></a></li><li id="line_90" class="even"><span class="lineNumber">&nbsp;90&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><a name="line_90"></a></li><li id="line_91" class="odd"><span class="lineNumber">&nbsp;91&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_91"></a></li><li id="line_92" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private method name &amp;quot;Controller::setHandlers&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">&nbsp;92&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">setHandlers</span><span class="keyword">()</span><a name="line_92"></a></li><li id="line_93" class="odd"><span class="lineNumber">&nbsp;93&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_93"></a></li><li id="line_94" class="even"><span class="lineNumber">&nbsp;94&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**&nbsp;@var&nbsp;$exceptionHandler&nbsp;ExceptionHandler&nbsp;*/</span><a name="line_94"></a></li><li id="line_95" class="odd"><span class="lineNumber">&nbsp;95&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$exceptionHandler&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">exceptionHandler</span><span class="keyword">);</span><a name="line_95"></a></li><li id="line_96" class="even"><span class="lineNumber">&nbsp;96&nbsp;</span><a name="line_96"></a></li><li id="line_97" class="odd"><span class="lineNumber">&nbsp;97&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">setAssertHandler</span><span class="keyword">)&nbsp;{</span><a name="line_97"></a></li><li id="line_98" class="even"><span class="lineNumber">&nbsp;98&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$exceptionHandler</span><span class="keyword">-&gt;</span><span class="default">addAssertHandler</span><span class="keyword">();</span><a name="line_98"></a></li><li id="line_99" class="odd"><span class="lineNumber">&nbsp;99&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_99"></a></li><li id="line_100" class="even"><span class="lineNumber">100&nbsp;</span><a name="line_100"></a></li><li id="line_101" class="odd"><span class="lineNumber">101&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">setErrorHandler</span><span class="keyword">)&nbsp;{</span><a name="line_101"></a></li><li id="line_102" class="even"><span class="lineNumber">102&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$exceptionHandler</span><span class="keyword">-&gt;</span><span class="default">addErrorHandler</span><span class="keyword">();</span><a name="line_102"></a></li><li id="line_103" class="odd"><span class="lineNumber">103&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_103"></a></li><li id="line_104" class="even"><span class="lineNumber">104&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_104"></a></li><li id="line_105" class="odd"><span class="lineNumber">105&nbsp;</span><a name="line_105"></a></li><li id="line_106" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Function doc comment is empty&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">106&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_106"></a></li><li id="line_107" class="odd"><span class="lineNumber">107&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><a name="line_107"></a></li><li id="line_108" class="even"><span class="lineNumber">108&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_108"></a></li><li id="line_109" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private method name &amp;quot;Controller::setRequest&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">109&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">setRequest</span><span class="keyword">()</span><a name="line_109"></a></li><li id="line_110" class="even"><span class="lineNumber">110&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_110"></a></li><li id="line_111" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Line exceeds 85 characters; contains 88 characters&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">111&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="string">'de\detert\sebastian\slimline\Request'</span><span class="keyword">);</span><a name="line_111"></a></li><li id="line_112" class="even"><span class="lineNumber">112&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_112"></a></li><li id="line_113" class="odd"><span class="lineNumber">113&nbsp;</span><a name="line_113"></a></li><li id="line_114" class="even"><span class="lineNumber">114&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_114"></a></li><li id="line_115" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing comment for param &amp;quot;$callbacks&amp;quot; at position 1&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;There must be exactly one blank line before the tags in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues moreErrors"><span class="lineNumber">115&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;array&nbsp;$callbacks</span><a name="line_115"></a></li><li id="line_116" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @return tag in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">116&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_116"></a></li><li id="line_117" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private method name &amp;quot;Controller::setResponse&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">117&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">setResponse</span><span class="keyword">(array&nbsp;</span><span class="default">$callbacks</span><span class="keyword">)</span><a name="line_117"></a></li><li id="line_118" class="even"><span class="lineNumber">118&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_118"></a></li><li id="line_119" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Line exceeds 85 characters; contains 90 characters&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">119&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">response&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="string">'de\detert\sebastian\slimline\Response'</span><span class="keyword">);</span><a name="line_119"></a></li><li id="line_120" class="even"><span class="lineNumber">120&nbsp;</span><a name="line_120"></a></li><li id="line_121" class="odd"><span class="lineNumber">121&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span class="default">$callbacks&nbsp;</span><span class="keyword">as&nbsp;</span><span class="default">$responseName&nbsp;</span><span class="keyword">=&gt;&nbsp;</span><span class="default">$callback</span><span class="keyword">)&nbsp;{</span><a name="line_121"></a></li><li id="line_122" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Line exceeds 85 characters; contains 109 characters&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">122&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">response</span><span class="keyword">-&gt;</span><span class="default">$responseName&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="string">'de\detert\sebastian\slimline\Response'</span><span class="keyword">);</span><a name="line_122"></a></li><li id="line_123" class="odd"><span class="lineNumber">123&nbsp;</span><a name="line_123"></a></li><li id="line_124" class="even"><span class="lineNumber">124&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$class&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$callback</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];</span><a name="line_124"></a></li><li id="line_125" class="odd"><span class="lineNumber">125&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$action&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$callback</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];</span><a name="line_125"></a></li><li id="line_126" class="even"><span class="lineNumber">126&nbsp;</span><a name="line_126"></a></li><li id="line_127" class="odd"><span class="lineNumber">127&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$controller&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="default">$class</span><span class="keyword">);</span><a name="line_127"></a></li><li id="line_128" class="even"><span class="lineNumber">128&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$controller</span><span class="keyword">-&gt;</span><span class="default">$action</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request</span><span class="keyword">,&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">response</span><span class="keyword">-&gt;</span><span class="default">$responseName</span><span class="keyword">);</span><a name="line_128"></a></li><li id="line_129" class="odd"><span class="lineNumber">129&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_129"></a></li><li id="line_130" class="even"><span class="lineNumber">130&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_130"></a></li><li id="line_131" class="odd"><span class="lineNumber">131&nbsp;</span><a name="line_131"></a></li><li id="line_132" class="even"><span class="lineNumber">132&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_132"></a></li><li id="line_133" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;There must be exactly one blank line before the tags in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">133&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;array</span><a name="line_133"></a></li><li id="line_134" class="even"><span class="lineNumber">134&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;Exception\PageNotFound</span><a name="line_134"></a></li><li id="line_135" class="odd"><span class="lineNumber">135&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_135"></a></li><li id="line_136" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private method name &amp;quot;Controller::getRewriteRules&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">136&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">getRewriteRules</span><span class="keyword">()</span><a name="line_136"></a></li><li id="line_137" class="odd"><span class="lineNumber">137&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_137"></a></li><li id="line_138" class="even"><span class="lineNumber">138&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$rules&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">requestMap</span><span class="keyword">;</span><a name="line_138"></a></li><li id="line_139" class="odd"><span class="lineNumber">139&nbsp;</span><a name="line_139"></a></li><li id="line_140" class="even"><span class="lineNumber">140&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$requestFiltered&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">request</span><span class="keyword">-&gt;</span><span class="default">getFilteredData</span><span class="keyword">(</span><a name="line_140"></a></li><li id="line_141" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Line exceeds 85 characters; contains 92 characters&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">141&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="string">'de\detert\sebastian\slimline\Request_Filter_Controller'</span><span class="keyword">)</span><a name="line_141"></a></li><li id="line_142" class="even"><span class="lineNumber">142&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</span><a name="line_142"></a></li><li id="line_143" class="odd"><span class="lineNumber">143&nbsp;</span><a name="line_143"></a></li><li id="line_144" class="even"><span class="lineNumber">144&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(empty(</span><span class="default">$requestFiltered</span><span class="keyword">-&gt;</span><span class="default">redirect_url</span><span class="keyword">))&nbsp;{</span><a name="line_144"></a></li><li id="line_145" class="odd"><span class="lineNumber">145&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$requestFiltered</span><span class="keyword">-&gt;</span><span class="default">redirect_url&nbsp;</span><span class="keyword">=&nbsp;</span><span class="string">'/'</span><span class="keyword">;</span><a name="line_145"></a></li><li id="line_146" class="even"><span class="lineNumber">146&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_146"></a></li><li id="line_147" class="odd"><span class="lineNumber">147&nbsp;</span><a name="line_147"></a></li><li id="line_148" class="even"><span class="lineNumber">148&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isset(</span><span class="default">$rules</span><span class="keyword">[</span><span class="default">$requestFiltered</span><span class="keyword">-&gt;</span><span class="default">redirect_url</span><span class="keyword">]))&nbsp;{</span><a name="line_148"></a></li><li id="line_149" class="odd"><span class="lineNumber">149&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**&nbsp;@var&nbsp;$exception&nbsp;Exception\PageNotFound&nbsp;*/</span><a name="line_149"></a></li><li id="line_150" class="even"><span class="lineNumber">150&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$exception&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><a name="line_150"></a></li><li id="line_151" class="odd"><span class="lineNumber">151&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string">'de\detert\sebastian\slimline\Exception\PageNotFound'</span><span class="keyword">,</span><a name="line_151"></a></li><li id="line_152" class="even"><span class="lineNumber">152&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$requestFiltered</span><span class="keyword">-&gt;</span><span class="default">redirect_url</span><a name="line_152"></a></li><li id="line_153" class="odd"><span class="lineNumber">153&nbsp;</span><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">);</span><a name="line_153"></a></li><li id="line_154" class="even"><span class="lineNumber">154&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;</span><span class="default">$exception</span><span class="keyword">;</span><a name="line_154"></a></li><li id="line_155" class="odd"><span class="lineNumber">155&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_155"></a></li><li id="line_156" class="even"><span class="lineNumber">156&nbsp;</span><a name="line_156"></a></li><li id="line_157" class="odd"><span class="lineNumber">157&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span class="default">$rules</span><span class="keyword">[</span><span class="default">$requestFiltered</span><span class="keyword">-&gt;</span><span class="default">redirect_url</span><span class="keyword">];</span><a name="line_157"></a></li><li id="line_158" class="even"><span class="lineNumber">158&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_158"></a></li><li id="line_159" class="odd"><span class="lineNumber">159&nbsp;</span><a name="line_159"></a></li><li id="line_160" class="even"><span class="lineNumber">160&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span><a name="line_160"></a></li><li id="line_161" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing comment for param &amp;quot;$callback&amp;quot; at position 1&lt;/div&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;There must be exactly one blank line before the tags in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues moreErrors"><span class="lineNumber">161&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;array&nbsp;$callback</span><a name="line_161"></a></li><li id="line_162" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Missing @return tag in function comment&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="even hasIssues Checkstyle"><span class="lineNumber">162&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><a name="line_162"></a></li><li id="line_163" title='|
-                        &lt;div class="tooltip"&gt;
-                            &lt;div class="title Checkstyle"&gt;Checkstyle&lt;/div&gt;
-                            &lt;div class="text"&gt;Private method name &amp;quot;Controller::render&amp;quot; must be prefixed with an underscore&lt;/div&gt;
-                        &lt;/div&gt;
-                        ' class="odd hasIssues Checkstyle"><span class="lineNumber">163&nbsp;</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private&nbsp;function&nbsp;</span><span class="default">render</span><span class="keyword">(array&nbsp;</span><span class="default">$callback</span><span class="keyword">)</span><a name="line_163"></a></li><li id="line_164" class="even"><span class="lineNumber">164&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;{</span><a name="line_164"></a></li><li id="line_165" class="odd"><span class="lineNumber">165&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$class&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$callback</span><span class="keyword">[</span><span class="string">'call'</span><span class="keyword">][</span><span class="default">0</span><span class="keyword">];</span><a name="line_165"></a></li><li id="line_166" class="even"><span class="lineNumber">166&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$action&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$callback</span><span class="keyword">[</span><span class="string">'call'</span><span class="keyword">][</span><span class="default">1</span><span class="keyword">];</span><a name="line_166"></a></li><li id="line_167" class="odd"><span class="lineNumber">167&nbsp;</span><a name="line_167"></a></li><li id="line_168" class="even"><span class="lineNumber">168&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span class="default">$callback</span><span class="keyword">[</span><span class="string">'template'</span><span class="keyword">]&nbsp;as&nbsp;</span><span class="default">$filename</span><span class="keyword">)&nbsp;{</span><a name="line_168"></a></li><li id="line_169" class="odd"><span class="lineNumber">169&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$render&nbsp;</span><span class="keyword">=&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">factory</span><span class="keyword">-&gt;</span><span class="default">create</span><span class="keyword">(</span><span class="default">$class</span><span class="keyword">,&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">config</span><span class="keyword">-&gt;</span><span class="default">templatePath</span><span class="keyword">);</span><a name="line_169"></a></li><li id="line_170" class="even"><span class="lineNumber">170&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$render</span><span class="keyword">-&gt;</span><span class="default">$action</span><span class="keyword">(</span><span class="default">$filename</span><span class="keyword">,&nbsp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">response</span><span class="keyword">);</span><a name="line_170"></a></li><li id="line_171" class="odd"><span class="lineNumber">171&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_171"></a></li><li id="line_172" class="even"><span class="lineNumber">172&nbsp;</span><span class="keyword">&nbsp;&nbsp;&nbsp;&nbsp;}</span><a name="line_172"></a></li><li id="line_173" class="odd"><span class="lineNumber">173&nbsp;</span><span class="keyword">}</span><span>
-</span><a name="line_173"></a></li></ol>
-            
-            <div id="sidebar">
-                <table cellpadding="3">
-                    <thead>
-                        <tr>
-                            <th width="40px" align="center">
-                                <strong>start</strong>
-                            </th>
-                            <th width="40px" align="center">
-                                <strong>end</strong>
-                            </th>
-                            <th>
-                                <strong>comment</strong>
-                            </th>
-                            <th width="120px">
-                                <strong>type of error</strong>
-                            </th>
-                            <th width="60px">
-                                <strong>severity</strong>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_1" onclick="switchLine('line_1')">
-                                1</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_1" onclick="switchLine('line_1'); new Effect.Highlight('line_1-1', {duration: 1.5}); return false">
-                                1</a>
-                            </td>
-                            <td>
-                                <a href="#line_1" onclick="switchLine('line_1'); new Effect.Highlight('line_1-1', {duration: 1.5}); return false">
-                                End of line character is invalid; expected &quot;\n&quot; but found &quot;\r\n&quot;</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_2" onclick="switchLine('line_2')">
-                                2</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_2" onclick="switchLine('line_2'); new Effect.Highlight('line_2-2', {duration: 1.5}); return false">
-                                2</a>
-                            </td>
-                            <td>
-                                <a href="#line_2" onclick="switchLine('line_2'); new Effect.Highlight('line_2-2', {duration: 1.5}); return false">
-                                Missing file doc comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_10" onclick="switchLine('line_10')">
-                                10</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_10" onclick="switchLine('line_10'); new Effect.Highlight('line_10-10', {duration: 1.5}); return false">
-                                10</a>
-                            </td>
-                            <td>
-                                <a href="#line_10" onclick="switchLine('line_10'); new Effect.Highlight('line_10-10', {duration: 1.5}); return false">
-                                @author tag comment indented incorrectly; expected 2 spaces but found 1</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14')">
-                                14</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                14</a>
-                            </td>
-                            <td>
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                Missing @category tag in class comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14')">
-                                14</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                14</a>
-                            </td>
-                            <td>
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                Missing @package tag in class comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14')">
-                                14</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                14</a>
-                            </td>
-                            <td>
-                                <a href="#line_14" onclick="switchLine('line_14'); new Effect.Highlight('line_14-14', {duration: 1.5}); return false">
-                                Missing @link tag in class comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_20" onclick="switchLine('line_20')">
-                                20</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_20" onclick="switchLine('line_20'); new Effect.Highlight('line_20-20', {duration: 1.5}); return false">
-                                20</a>
-                            </td>
-                            <td>
-                                <a href="#line_20" onclick="switchLine('line_20'); new Effect.Highlight('line_20-20', {duration: 1.5}); return false">
-                                Private member variable &quot;request&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_24" onclick="switchLine('line_24')">
-                                24</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_24" onclick="switchLine('line_24'); new Effect.Highlight('line_24-24', {duration: 1.5}); return false">
-                                24</a>
-                            </td>
-                            <td>
-                                <a href="#line_24" onclick="switchLine('line_24'); new Effect.Highlight('line_24-24', {duration: 1.5}); return false">
-                                Private member variable &quot;response&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_28" onclick="switchLine('line_28')">
-                                28</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_28" onclick="switchLine('line_28'); new Effect.Highlight('line_28-28', {duration: 1.5}); return false">
-                                28</a>
-                            </td>
-                            <td>
-                                <a href="#line_28" onclick="switchLine('line_28'); new Effect.Highlight('line_28-28', {duration: 1.5}); return false">
-                                Private member variable &quot;config&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_32" onclick="switchLine('line_32')">
-                                32</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_32" onclick="switchLine('line_32'); new Effect.Highlight('line_32-32', {duration: 1.5}); return false">
-                                32</a>
-                            </td>
-                            <td>
-                                <a href="#line_32" onclick="switchLine('line_32'); new Effect.Highlight('line_32-32', {duration: 1.5}); return false">
-                                Private member variable &quot;factory&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_35" onclick="switchLine('line_35')">
-                                35</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_35" onclick="switchLine('line_35'); new Effect.Highlight('line_35-35', {duration: 1.5}); return false">
-                                35</a>
-                            </td>
-                            <td>
-                                <a href="#line_35" onclick="switchLine('line_35'); new Effect.Highlight('line_35-35', {duration: 1.5}); return false">
-                                Missing comment for param &quot;$config&quot; at position 1</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_35" onclick="switchLine('line_35')">
-                                35</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_35" onclick="switchLine('line_35'); new Effect.Highlight('line_35-35', {duration: 1.5}); return false">
-                                35</a>
-                            </td>
-                            <td>
-                                <a href="#line_35" onclick="switchLine('line_35'); new Effect.Highlight('line_35-35', {duration: 1.5}); return false">
-                                There must be exactly one blank line before the tags in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36')">
-                                36</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                36</a>
-                            </td>
-                            <td>
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                The variable names for parameters $config (1) and $factory (2) do not align</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36')">
-                                36</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                36</a>
-                            </td>
-                            <td>
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                The comments for parameters $config (1) and $factory (2) do not align</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36')">
-                                36</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                36</a>
-                            </td>
-                            <td>
-                                <a href="#line_36" onclick="switchLine('line_36'); new Effect.Highlight('line_36-36', {duration: 1.5}); return false">
-                                Missing comment for param &quot;$factory&quot; at position 2</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_49" onclick="switchLine('line_49')">
-                                49</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_49" onclick="switchLine('line_49'); new Effect.Highlight('line_49-49', {duration: 1.5}); return false">
-                                49</a>
-                            </td>
-                            <td>
-                                <a href="#line_49" onclick="switchLine('line_49'); new Effect.Highlight('line_49-49', {duration: 1.5}); return false">
-                                Missing comment for param &quot;$className&quot; at position 1</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_49" onclick="switchLine('line_49')">
-                                49</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_49" onclick="switchLine('line_49'); new Effect.Highlight('line_49-49', {duration: 1.5}); return false">
-                                49</a>
-                            </td>
-                            <td>
-                                <a href="#line_49" onclick="switchLine('line_49'); new Effect.Highlight('line_49-49', {duration: 1.5}); return false">
-                                There must be exactly one blank line before the tags in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_50" onclick="switchLine('line_50')">
-                                50</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_50" onclick="switchLine('line_50'); new Effect.Highlight('line_50-50', {duration: 1.5}); return false">
-                                50</a>
-                            </td>
-                            <td>
-                                <a href="#line_50" onclick="switchLine('line_50'); new Effect.Highlight('line_50-50', {duration: 1.5}); return false">
-                                Missing @return tag in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_51" onclick="switchLine('line_51')">
-                                51</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_51" onclick="switchLine('line_51'); new Effect.Highlight('line_51-51', {duration: 1.5}); return false">
-                                51</a>
-                            </td>
-                            <td>
-                                <a href="#line_51" onclick="switchLine('line_51'); new Effect.Highlight('line_51-51', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::simpleAutoload&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_60" onclick="switchLine('line_60')">
-                                60</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_60" onclick="switchLine('line_60'); new Effect.Highlight('line_60-60', {duration: 1.5}); return false">
-                                60</a>
-                            </td>
-                            <td>
-                                <a href="#line_60" onclick="switchLine('line_60'); new Effect.Highlight('line_60-60', {duration: 1.5}); return false">
-                                Line exceeds 85 characters; contains 86 characters</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                warning                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_68" onclick="switchLine('line_68')">
-                                68</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_68" onclick="switchLine('line_68'); new Effect.Highlight('line_68-68', {duration: 1.5}); return false">
-                                68</a>
-                            </td>
-                            <td>
-                                <a href="#line_68" onclick="switchLine('line_68'); new Effect.Highlight('line_68-68', {duration: 1.5}); return false">
-                                Function doc comment is empty</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_89" onclick="switchLine('line_89')">
-                                89</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_89" onclick="switchLine('line_89'); new Effect.Highlight('line_89-89', {duration: 1.5}); return false">
-                                89</a>
-                            </td>
-                            <td>
-                                <a href="#line_89" onclick="switchLine('line_89'); new Effect.Highlight('line_89-89', {duration: 1.5}); return false">
-                                Function doc comment is empty</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_92" onclick="switchLine('line_92')">
-                                92</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_92" onclick="switchLine('line_92'); new Effect.Highlight('line_92-92', {duration: 1.5}); return false">
-                                92</a>
-                            </td>
-                            <td>
-                                <a href="#line_92" onclick="switchLine('line_92'); new Effect.Highlight('line_92-92', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::setHandlers&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_106" onclick="switchLine('line_106')">
-                                106</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_106" onclick="switchLine('line_106'); new Effect.Highlight('line_106-106', {duration: 1.5}); return false">
-                                106</a>
-                            </td>
-                            <td>
-                                <a href="#line_106" onclick="switchLine('line_106'); new Effect.Highlight('line_106-106', {duration: 1.5}); return false">
-                                Function doc comment is empty</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_109" onclick="switchLine('line_109')">
-                                109</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_109" onclick="switchLine('line_109'); new Effect.Highlight('line_109-109', {duration: 1.5}); return false">
-                                109</a>
-                            </td>
-                            <td>
-                                <a href="#line_109" onclick="switchLine('line_109'); new Effect.Highlight('line_109-109', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::setRequest&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_111" onclick="switchLine('line_111')">
-                                111</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_111" onclick="switchLine('line_111'); new Effect.Highlight('line_111-111', {duration: 1.5}); return false">
-                                111</a>
-                            </td>
-                            <td>
-                                <a href="#line_111" onclick="switchLine('line_111'); new Effect.Highlight('line_111-111', {duration: 1.5}); return false">
-                                Line exceeds 85 characters; contains 88 characters</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                warning                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_115" onclick="switchLine('line_115')">
-                                115</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_115" onclick="switchLine('line_115'); new Effect.Highlight('line_115-115', {duration: 1.5}); return false">
-                                115</a>
-                            </td>
-                            <td>
-                                <a href="#line_115" onclick="switchLine('line_115'); new Effect.Highlight('line_115-115', {duration: 1.5}); return false">
-                                Missing comment for param &quot;$callbacks&quot; at position 1</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_115" onclick="switchLine('line_115')">
-                                115</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_115" onclick="switchLine('line_115'); new Effect.Highlight('line_115-115', {duration: 1.5}); return false">
-                                115</a>
-                            </td>
-                            <td>
-                                <a href="#line_115" onclick="switchLine('line_115'); new Effect.Highlight('line_115-115', {duration: 1.5}); return false">
-                                There must be exactly one blank line before the tags in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_116" onclick="switchLine('line_116')">
-                                116</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_116" onclick="switchLine('line_116'); new Effect.Highlight('line_116-116', {duration: 1.5}); return false">
-                                116</a>
-                            </td>
-                            <td>
-                                <a href="#line_116" onclick="switchLine('line_116'); new Effect.Highlight('line_116-116', {duration: 1.5}); return false">
-                                Missing @return tag in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_117" onclick="switchLine('line_117')">
-                                117</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_117" onclick="switchLine('line_117'); new Effect.Highlight('line_117-117', {duration: 1.5}); return false">
-                                117</a>
-                            </td>
-                            <td>
-                                <a href="#line_117" onclick="switchLine('line_117'); new Effect.Highlight('line_117-117', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::setResponse&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_119" onclick="switchLine('line_119')">
-                                119</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_119" onclick="switchLine('line_119'); new Effect.Highlight('line_119-119', {duration: 1.5}); return false">
-                                119</a>
-                            </td>
-                            <td>
-                                <a href="#line_119" onclick="switchLine('line_119'); new Effect.Highlight('line_119-119', {duration: 1.5}); return false">
-                                Line exceeds 85 characters; contains 90 characters</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                warning                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_122" onclick="switchLine('line_122')">
-                                122</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_122" onclick="switchLine('line_122'); new Effect.Highlight('line_122-122', {duration: 1.5}); return false">
-                                122</a>
-                            </td>
-                            <td>
-                                <a href="#line_122" onclick="switchLine('line_122'); new Effect.Highlight('line_122-122', {duration: 1.5}); return false">
-                                Line exceeds 85 characters; contains 109 characters</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                warning                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_133" onclick="switchLine('line_133')">
-                                133</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_133" onclick="switchLine('line_133'); new Effect.Highlight('line_133-133', {duration: 1.5}); return false">
-                                133</a>
-                            </td>
-                            <td>
-                                <a href="#line_133" onclick="switchLine('line_133'); new Effect.Highlight('line_133-133', {duration: 1.5}); return false">
-                                There must be exactly one blank line before the tags in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_136" onclick="switchLine('line_136')">
-                                136</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_136" onclick="switchLine('line_136'); new Effect.Highlight('line_136-136', {duration: 1.5}); return false">
-                                136</a>
-                            </td>
-                            <td>
-                                <a href="#line_136" onclick="switchLine('line_136'); new Effect.Highlight('line_136-136', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::getRewriteRules&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_141" onclick="switchLine('line_141')">
-                                141</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_141" onclick="switchLine('line_141'); new Effect.Highlight('line_141-141', {duration: 1.5}); return false">
-                                141</a>
-                            </td>
-                            <td>
-                                <a href="#line_141" onclick="switchLine('line_141'); new Effect.Highlight('line_141-141', {duration: 1.5}); return false">
-                                Line exceeds 85 characters; contains 92 characters</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                warning                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_161" onclick="switchLine('line_161')">
-                                161</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_161" onclick="switchLine('line_161'); new Effect.Highlight('line_161-161', {duration: 1.5}); return false">
-                                161</a>
-                            </td>
-                            <td>
-                                <a href="#line_161" onclick="switchLine('line_161'); new Effect.Highlight('line_161-161', {duration: 1.5}); return false">
-                                Missing comment for param &quot;$callback&quot; at position 1</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_161" onclick="switchLine('line_161')">
-                                161</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_161" onclick="switchLine('line_161'); new Effect.Highlight('line_161-161', {duration: 1.5}); return false">
-                                161</a>
-                            </td>
-                            <td>
-                                <a href="#line_161" onclick="switchLine('line_161'); new Effect.Highlight('line_161-161', {duration: 1.5}); return false">
-                                There must be exactly one blank line before the tags in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_162" onclick="switchLine('line_162')">
-                                162</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_162" onclick="switchLine('line_162'); new Effect.Highlight('line_162-162', {duration: 1.5}); return false">
-                                162</a>
-                            </td>
-                            <td>
-                                <a href="#line_162" onclick="switchLine('line_162'); new Effect.Highlight('line_162-162', {duration: 1.5}); return false">
-                                Missing @return tag in function comment</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="Checkstyle">
-                            <td align="center">
-                                <a href="#line_163" onclick="switchLine('line_163')">
-                                163</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_163" onclick="switchLine('line_163'); new Effect.Highlight('line_163-163', {duration: 1.5}); return false">
-                                163</a>
-                            </td>
-                            <td>
-                                <a href="#line_163" onclick="switchLine('line_163'); new Effect.Highlight('line_163-163', {duration: 1.5}); return false">
-                                Private method name &quot;Controller::render&quot; must be prefixed with an underscore</a>
-                            </td>
-                            <td>
-                                Checkstyle                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                        
-                        <tr class="PMD">
-                            <td align="center">
-                                <a href="#line_51" onclick="switchLine('line_51')">
-                                51</a>
-                            </td>
-                            <td align="center">
-                                <a href="#line_66" onclick="switchLine('line_51'); new Effect.Highlight('line_51-66', {duration: 1.5}); return false">
-                                66</a>
-                            </td>
-                            <td>
-                                <a href="#line_51" onclick="switchLine('line_51'); new Effect.Highlight('line_51-66', {duration: 1.5}); return false">
-                                
-      Avoid unused private methods such as 'simpleAutoload'.
-    </a>
-                            </td>
-                            <td>
-                                PMD                            </td>
-                            <td>
-                                error                            </td>
-                        </tr>
-                                            </tbody>
-                </table>
-            </div>
-            <script type="text/javascript" language="javascript">
-                $(initReview);
-            </script>
-                    </div>
-    </body>
-</html>
