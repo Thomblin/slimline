@@ -43,6 +43,9 @@ class DbMigrationTest extends Helper\TestCase
 
         $sql = 'DROP TABLE IF EXISTS `migration_version`';
         $this->handler->query($sql);
+
+        $sql = 'DROP TABLE IF EXISTS `misc`';
+        $this->handler->query($sql);
     }
 
     /**

@@ -91,15 +91,8 @@ class Controller
     private function setHandlers()
     {
         /** @var $exceptionHandler ExceptionHandler */
-        $exceptionHandler = $this->pool->factory->create($this->pool->config->exceptionHandler);
-
-        if ($this->pool->config->setAssertHandler) {
-            $exceptionHandler->addAssertHandler();
-        }
-
-        if ($this->pool->config->setErrorHandler) {
-            $exceptionHandler->addErrorHandler();
-        }
+        $this->pool->factory->create($this->pool->config->exceptionHandler)
+            ->setHandlers();
     }
 
     /**

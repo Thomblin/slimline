@@ -43,12 +43,12 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
     {
         $exceptionHandler = $this->getMock(
             '\de\detert\sebastian\slimline\Exception\Handler',
-            array('addAssertHandler', 'addErrorHandler')
+            array('setAssertHandling', 'setErrorHandling')
         );
         $exceptionHandler->expects($this->once())
-            ->method('addAssertHandler');
+            ->method('setAssertHandling');
         $exceptionHandler->expects($this->once())
-            ->method('addErrorHandler');
+            ->method('setErrorHandling');
 
         $factory = new FactoryMock(new Factory());
         $factory->setMock('de\detert\sebastian\slimline\Exception\Handler', $exceptionHandler);
@@ -85,56 +85,6 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         }
 
         return new Controller($config, $factory);
-    }
-
-    /**
-     * @covers de\detert\sebastian\slimline\Controller::setHandlers
-     * @covers de\detert\sebastian\slimline\Controller::run
-     */
-    public function testThatControllerSetsOnlyErrorHandler()
-    {
-        $exceptionHandler = $this->getMock(
-            '\de\detert\sebastian\slimline\Exception\Handler',
-            array('addAssertHandler', 'addErrorHandler')
-        );
-        $exceptionHandler->expects($this->never())
-            ->method('addAssertHandler');
-        $exceptionHandler->expects($this->once())
-            ->method('addErrorHandler');
-
-        $factory = new FactoryMock(new Factory());
-        $factory->setMock('de\detert\sebastian\slimline\Exception\Handler', $exceptionHandler);
-
-        $config = new Config();
-        $config->setAssertHandler = false;
-
-        $controller = $this->getNewController($config, $factory);
-        $controller->run();
-    }
-
-    /**
-     * @covers de\detert\sebastian\slimline\Controller::setHandlers
-     * @covers de\detert\sebastian\slimline\Controller::run
-     */
-    public function testThatControllerSetsOnlyAssertHandler()
-    {
-        $exceptionHandler = $this->getMock(
-            '\de\detert\sebastian\slimline\Exception\Handler',
-            array('addAssertHandler', 'addErrorHandler')
-        );
-        $exceptionHandler->expects($this->once())
-            ->method('addAssertHandler');
-        $exceptionHandler->expects($this->never())
-            ->method('addErrorHandler');
-
-        $factory = new FactoryMock(new Factory());
-        $factory->setMock('de\detert\sebastian\slimline\Exception\Handler', $exceptionHandler);
-
-        $config = new Config();
-        $config->setErrorHandler = false;
-
-        $controller = $this->getNewController($config, $factory);
-        $controller->run();
     }
 
     /**

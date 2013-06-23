@@ -28,8 +28,6 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             'includes' => array(),
             'templatePath' => null,
             'exceptionHandler' => 'de\detert\sebastian\slimline\Exception\Handler',
-            'setAssertHandler' => true,
-            'setErrorHandler' => true,
             'db' => array(),
             'renderError' => array(
                 'template' => array(

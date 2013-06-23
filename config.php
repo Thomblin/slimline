@@ -37,14 +37,6 @@ class Config
      */
     public $exceptionHandler = 'de\detert\sebastian\slimline\Exception\Handler';
     /**
-     * @var bool
-     */
-    public $setAssertHandler = true;
-    /**
-     * @var bool
-     */
-    public $setErrorHandler = true;
-    /**
      * @var array
      */
     public $db = array();

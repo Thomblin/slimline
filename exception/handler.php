@@ -14,7 +14,16 @@ class Handler
     /**
      *
      */
-    public function addAssertHandler()
+    public function setHandlers()
+    {
+        $this->setAssertHandling();
+        $this->setErrorHandling();
+    }
+
+    /**
+     *
+     */
+    protected function setAssertHandling()
     {
         // Active assert and make it quiet
         assert_options (ASSERT_ACTIVE, 1);
@@ -40,7 +49,7 @@ class Handler
     /**
      *
      */
-    public function addErrorHandler()
+    protected function setErrorHandling()
     {
         set_error_handler(array(__CLASS__, 'errorHandler'), E_ALL);
     }
