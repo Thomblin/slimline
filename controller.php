@@ -74,6 +74,7 @@ class Controller
         try {
             $this->setHandlers();
             $this->setRequest();
+            $this->setSession();
 
             $rules = $this->getRewriteRules();
             $this->setResponse($rules['callbacks']);
