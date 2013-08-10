@@ -24,6 +24,11 @@ class Factory
         array_shift($args);
 
         $reflection = new \ReflectionClass($className);
-        return $reflection->newInstanceArgs($args);
+
+        if ( empty($args) ) {
+            return $reflection->newInstance();
+        } else {
+            return $reflection->newInstanceArgs($args);
+        }
     }
 }

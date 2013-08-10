@@ -18,6 +18,9 @@ class Handler
      */
     private $db;
 
+    const ROW_INSERTED = 1;
+    const ROW_UPDATED  = 2;
+
     /**
      * @param Config $config
      */
@@ -135,6 +138,11 @@ class Handler
     public function saveModel(Model $model)
     {
         $data  = $model->toArray();
+
+        if ( empty($data) ) {
+            return;
+        }
+
         $table = $model->getTableName();
 
         $columns = "`" . implode('`,`', array_keys($data)) . "`";
@@ -181,5 +189,12 @@ class Handler
         }
 
         return $models;
+    }
+
+    public function getAffectedRows()
+    {
+        $result = $this->fetch("SELECT ROW_COUNT()");
+
+        return current($result);
     }
 }

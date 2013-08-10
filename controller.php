@@ -43,7 +43,10 @@ class Controller
 
         date_default_timezone_set($config->timezone);
 
-        $this->pool->config->init();
+        $this->setHandlers();
+        $this->setRequest();
+
+        $this->pool->config->init($this->pool);
     }
 
     /**
@@ -72,10 +75,6 @@ class Controller
     public function run()
     {
         try {
-            $this->setHandlers();
-            $this->setRequest();
-            $this->setSession();
-
             $rules = $this->getRewriteRules();
             $this->setResponse($rules['callbacks']);
             $this->render($rules['render']);

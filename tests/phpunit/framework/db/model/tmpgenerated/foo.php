@@ -32,14 +32,14 @@ class Foo extends Model
     }
 
     /**
-     *  @return boolean
+     * @return boolean
      */
     public function issetId() {
         return isset($this->data['id']);
     }
 
     /**
-     *  @return int
+     * @return int
      */
     public function getId() {
         return $this->data['id'];
@@ -53,14 +53,14 @@ class Foo extends Model
     }
 
     /**
-     *  @return boolean
+     * @return boolean
      */
     public function issetText() {
         return isset($this->data['text']);
     }
 
     /**
-     *  @return varchar
+     * @return varchar
      */
     public function getText() {
         return $this->data['text'];
