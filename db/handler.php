@@ -138,6 +138,11 @@ class Handler
     public function saveModel(Model $model)
     {
         $data  = $model->toArray();
+
+        if ( empty($data) ) {
+            return;
+        }
+
         $table = $model->getTableName();
 
         $columns = "`" . implode('`,`', array_keys($data)) . "`";
