@@ -2,6 +2,7 @@
 namespace de\detert\sebastian\slimline\db;
 
 use de\detert\sebastian\slimline\Exception\Pdo;
+use de\detert\sebastian\slimline\Response_Debug_Sql;
 
 /**
  * database handler for sql queries and more
@@ -17,6 +18,10 @@ class Handler
      * @var PDO
      */
     private $db;
+    /**
+     * @var Response_Debug_Sql
+     */
+    private $debug;
 
     const ROW_INSERTED = 1;
     const ROW_UPDATED  = 2;
@@ -29,6 +34,31 @@ class Handler
         $this->db = new \PDO($config->dsn, $config->user, $config->password);
         $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->db->exec("SET NAMES UTF8");
+    }
+
+    /**
+     * @param Response_Debug_Sql $debug
+     */
+    public function setDebugResponse(Response_Debug_Sql $debug)
+    {
+        $this->debug = $debug;
+    }
+    /**
+     * @param string $sql
+     * @param array  $params
+     */
+    private function startDebug($sql, array $params = array())
+    {
+       if ( !is_null($this->debug) ) {
+           $this->debug->start($sql, $params);
+       }
+    }
+
+    public function stopDebug()
+    {
+        if ( !is_null($this->debug) ) {
+            $this->debug->stop();
+        }
     }
 
     /**
@@ -51,9 +81,12 @@ class Handler
     private function prepareAndExecute($sql, array $params = array())
     {
         try {
+            $this->startDebug($sql, $params);
             $statement = $this->db->prepare($sql);
             $statement->execute($params);
+            $this->stopDebug();
         } catch(\PDOException $e) {
+            $this->stopDebug();
             throw new Pdo(
                 $e->getMessage() . PHP_EOL .
                 $sql . PHP_EOL .
