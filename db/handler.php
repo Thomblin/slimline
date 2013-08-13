@@ -168,6 +168,30 @@ class Handler
     /**
      * @param Model $model
      */
+    public function insertModel(Model $model)
+    {
+        $data  = $model->toArray();
+
+        if ( empty($data) ) {
+            return;
+        }
+
+        $table = $model->getTableName();
+
+        $columns = "`" . implode('`,`', array_keys($data)) . "`";
+        $values  = implode(', ', array_fill(0, count($data), '?'));
+        $params  = array_merge(array_values($data));
+
+        $sql = "INSERT IGNORE INTO `$table`
+            ($columns) VALUES
+            ($values)";
+
+        $this->query($sql, $params);
+    }
+
+    /**
+     * @param Model $model
+     */
     public function saveModel(Model $model)
     {
         $data  = $model->toArray();
