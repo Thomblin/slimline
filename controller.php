@@ -79,8 +79,6 @@ class Controller
             $this->setResponse($rules['callbacks']);
             $this->render($rules['render']);
         } catch (\Exception $e) {
-            print_r($e->getMessage());
-
             $this->response->exception = $e;
             $this->render($this->pool->config->renderError);
         }
