@@ -24,11 +24,24 @@ class Response_Debug_Sql extends Response
     {
         $this->last = count($this->debug);
         $this->debug[$this->last] = array(
-            'number' => $this->last + 1,
-            'sql'    => $sql,
-            'params' => $params,
-            'start'  => microtime(true),
+            'number'    => $this->last + 1,
+            'sql'       => $sql,
+            'params'    => $params,
+            'start'     => microtime(true),
+            'backtrace' => $this->getBacktrace(),
         );
+    }
+
+    public function getBacktrace()
+    {
+        $bt = debug_backtrace();
+        array_pop($bt);
+
+        foreach ( $bt as $k => $v ) {
+            unset($bt[$k]['args'], $bt[$k]['object']);
+        }
+
+        return $bt;
     }
 
     public function stop()
