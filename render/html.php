@@ -18,4 +18,17 @@ class Render_Html extends Render
     {
         return 'html';
     }
+
+    /**
+     * @param Response_Form $response
+     * @param string $name
+     */
+    public function getFormClass(Response_Form $response, $name)
+    {
+        if ( isset($response->errorFields[$name]) ) {
+            return " has-error";
+        }
+
+        return "";
+    }
 }
