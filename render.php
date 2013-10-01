@@ -17,6 +17,10 @@ abstract class Render
      * @var string
      */
     protected $root;
+    /**
+     * @var Translate
+     */
+    private $translate;
 
     /**
      * @param string $root directory which contains all templates
@@ -51,4 +55,22 @@ abstract class Render
      * @return string
      */
     protected abstract function getTemplateFolder();
+
+    public function setTranslation(Translate $translate)
+    {
+        $this->translate = $translate;
+    }
+
+    /**
+     * @param string $category
+     * @param string $text
+     *
+     * @return string
+     */
+    public function getTranslation($category, $text)
+    {
+        return isset($this->translate)
+            ? $this->translate->getTranslation($category, $text)
+            : $text;
+    }
 }

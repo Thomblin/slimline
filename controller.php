@@ -164,6 +164,9 @@ class Controller
 
         foreach ($callback['template'] as $filename) {
             $render = $this->pool->factory->create($class, $this->pool->config->templatePath);
+            if ( isset($this->pool->translate) ) {
+                $render->setTranslation($this->pool->translate);
+            }
             $render->$action($filename, $this->response);
         }
     }

@@ -27,4 +27,8 @@ class Pool {
      * @var db\Handler
      */
     public $dbHandler;
+    /**
+     * @var Translate
+     */
+    public $translate;
 }
