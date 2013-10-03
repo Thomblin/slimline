@@ -86,6 +86,19 @@ class Controller
     }
 
     /**
+     * @param array $callbacks
+     *
+     * @return Response
+     */
+    public function runCli(array $callbacks, array $userVars)
+    {
+        $this->pool->request->setUserVar($userVars);
+        $this->setResponse($callbacks);
+
+        return $this->response;
+    }
+
+    /**
      *
      */
     private function setHandlers()

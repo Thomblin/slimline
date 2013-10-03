@@ -37,6 +37,7 @@ class Request
         $this->data['POST'] = $this->normalize($_POST);
         $this->data['GET'] = $this->normalize($_GET);
         $this->data['COOKIE'] = $this->normalize($_COOKIE);
+        $this->data['USER'] = array();
     }
 
     /**
@@ -82,5 +83,13 @@ class Request
         }
 
         return new Request_Filtered($filtered_vars);
+    }
+
+    /**
+     * @param array $userVars
+     */
+    public function setUserVar(array $userVars)
+    {
+        $this->data['USER'] = $this->normalize($userVars);
     }
 }
