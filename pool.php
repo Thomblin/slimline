@@ -24,10 +24,6 @@ class Pool {
      */
     public $factory;
     /**
-     * @var db\Handler
-     */
-    public $dbHandler;
-    /**
      * @var Translate
      */
     public $translate;

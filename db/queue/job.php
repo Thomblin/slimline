@@ -130,9 +130,9 @@ class Job extends Model
     public function execute(Pool $pool) {
         list($class, $method, $params) = unserialize($this->data['job']);
 
-        $object = new $class();
+        $object = new $class($pool);
 
-        return call_user_func_array(array($object, $method), array($pool, $params));
+        return call_user_func_array(array($object, $method), array($params));
     }
 
     /**

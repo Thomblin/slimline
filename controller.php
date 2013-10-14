@@ -127,8 +127,17 @@ class Controller
             $class = $callback[0];
             $action = $callback[1];
 
-            $controller = $this->pool->factory->create($class);
-            $this->response->$responseName = $controller->$action($this->pool);
+            $controller = $this->pool->factory->create($class, $this->pool);
+
+            if ( ! $controller instanceof Controllable ) {
+
+                /** @var $exception Exception\PageNotFound */
+                $exception = $this->pool->factory->create(
+                    'de\detert\sebastian\slimline\Exception\ControllableExpected'
+                );
+                throw $exception;
+            }
+            $this->response->$responseName = $controller->$action();
 
             if ( ! $this->response->$responseName instanceof Response ) {
                 throw new Exception\Error(
