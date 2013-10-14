@@ -2,6 +2,7 @@
 namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\Tests\Helper\Dummy;
+use de\detert\sebastian\slimline\Pool;
 
 require_once BASE_DIR . '/tests/helper/dummy.php';
 
@@ -18,7 +19,8 @@ class DummyTest extends \PHPUnit_Framework_TestCase
      */
     public function testShouldCreateDummyClass()
     {
-        $dummy = new Dummy(1, 2, 3);
+        $dummy = new Dummy(new Pool());
+        $dummy->set123(1, 2, 3);
 
         $this->assertEquals(1, $dummy->one);
         $this->assertEquals(2, $dummy->two);

@@ -182,14 +182,12 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $factory->setMock('de\detert\sebastian\slimline\Response', $response2, 2);
         $factory->setMock('de\detert\sebastian\slimline\Response', $response3, 3);
 
-        $dummy = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array('run'));
+        $dummy = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array('run'), array($pool));
         $dummy->expects($this->at(0))
             ->method('run')
-            ->with($this->equalTo($pool))
             ->will($this->returnValue($response2));
         $dummy->expects($this->at(1))
             ->method('run')
-            ->with($this->equalTo($pool))
             ->will($this->returnValue($response3));
 
         $factory->setMock('de\detert\sebastian\slimline\Tests\Helper\Dummy', $dummy, 1);
