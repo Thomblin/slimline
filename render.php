@@ -64,13 +64,14 @@ abstract class Render
     /**
      * @param string $category
      * @param string $text
+     * @param array $params
      *
      * @return string
      */
-    public function getTranslation($category, $text)
+    public function getTranslation($category, $text, array $params = array())
     {
         return isset($this->translate)
-            ? $this->translate->getTranslation($category, $text)
+            ? $this->translate->getTranslation($category, $text, $params)
             : $text;
     }
 }

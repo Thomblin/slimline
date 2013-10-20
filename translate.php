@@ -33,16 +33,25 @@ class Translate
     /**
      * @param string $category
      * @param string $text
+     * @param array  $params
      *
      * @return string
      */
-    public function getTranslation($category, $text)
+    public function getTranslation($category, $text, array $params = array())
     {
         $this->loadCategory($category);
 
-        return isset($this->cache[$category][$text])
-            ? $this->cache[$category][$text]
-            : $text;
+        if ( isset($this->cache[$category][$text]) ) {
+            $text = $this->cache[$category][$text];
+
+            $search = array_map(function ($var) {
+                return '%' . $var;
+            }, array_keys($params));
+
+            $text = str_replace($search, array_values($params), $text);
+        }
+
+        return $text;
     }
 
     private function loadCategory($category)
