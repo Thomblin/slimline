@@ -43,39 +43,48 @@ class Worker
      * @param Pool   $pool
      * @param string $name
      */
-    public function run(Pool $pool, $name) {
+    public function run(Pool $pool, $name)
+    {
+        do {
+            $this->executeNextJob($pool, $name);
+        } while(true);
+    }
 
+    /**
+     * @param Pool   $pool
+     * @param string $name
+     */
+    public function executeNextJob(Pool $pool, $name)
+    {
         $pid = getmypid();
 
-        do {
-            try {
-                $job = $this->repository->getNextJob($pid, $name);
-            } catch(Exception_StillRunning $e) {
-                $this->repository->finishJob($this->repository->getRunningJob($pid));
-                continue;
-            } catch(Exception_NoJobFound $e) {
-                sleep(5);
-                continue;
-            } catch(\Exception $e) {
-                if ( !is_null($this->callback) ) {
-                    $this->callback->catchException($e);
-                }
-                continue;
+        try {
+            $job = $this->repository->getNextJob($pid, $name);
+        } catch(Exception_StillRunning $e) {
+            $this->repository->finishJob($this->repository->getRunningJob($pid));
+            return;
+        } catch(Exception_NoJobFound $e) {
+            sleep(5);
+            return;
+        } catch(\Exception $e) {
+            if ( !is_null($this->callback) ) {
+                $this->callback->catchException($e);
             }
+            return;
+        }
 
-            try {
-                $result = $job->execute($pool);
-                $this->repository->finishJob($job);
+        try {
+            $result = $job->execute($pool);
+            $this->repository->finishJob($job);
 
-                if ( !is_null($this->callback) ) {
-                    $this->callback->catchJobResult($job, $result);
-                }
-            } catch(\Exception $e) {
-                $this->repository->finishJob($job);
-                if ( !is_null($this->callback) ) {
-                    $this->callback->catchJobException($job, $e);
-                }
+            if ( !is_null($this->callback) ) {
+                $this->callback->catchJobResult($job, $result);
             }
-        } while(true);
+        } catch(\Exception $e) {
+            $this->repository->finishJob($job);
+            if ( !is_null($this->callback) ) {
+                $this->callback->catchJobException($job, $e);
+            }
+        }
     }
 }
