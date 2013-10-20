@@ -3,6 +3,7 @@ namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\Tests\Helper\Factory;
 use de\detert\sebastian\slimline\Tests\Helper\Dummy;
+use de\detert\sebastian\slimline\Pool;
 
 require_once BASE_DIR . 'factory.php';
 require_once BASE_DIR . 'tests' . DS . 'helper' . DS . 'factory.php';
@@ -22,7 +23,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldCreateDummyClass()
     {
         $factory = new Factory();
-        $dummy   = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $dummy   = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $this->assertInstanceOf('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $dummy);
     }
@@ -34,10 +35,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnMock()
     {
         $factory = new Factory();
-        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock);
 
-        $dummy   = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $dummy   = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
 
         $this->assertTrue($mock === $dummy);
     }
@@ -49,12 +50,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnMockAtSecondCall()
     {
         $factory = new Factory();
-        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock, 2);
 
-        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $this->assertTrue($mock !== $firstCall);
         $this->assertTrue($mock === $secondCall);
@@ -68,13 +69,13 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnMockAtFirstAndSecondCall()
     {
         $factory = new Factory();
-        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock, 1);
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock, 2);
 
-        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $this->assertTrue($mock === $firstCall);
         $this->assertTrue($mock === $secondCall);
@@ -88,17 +89,17 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldReturnDifferentMocks()
     {
         $factory = new Factory();
-        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $mock2  = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $mock3  = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
+        $mock2  = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
+        $mock3  = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
 
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock3);
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock, 1);
         $factory->setMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', $mock2, 2);
 
-        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
-        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $firstCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $secondCall = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
+        $thirdCall  = $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $this->assertTrue($mock === $firstCall);
         $this->assertTrue($mock2 !== $firstCall);
@@ -124,12 +125,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $actual = $factory->getNumOfCreateCalls('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
         $this->assertEquals($expected, $actual);
 
-        $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $actual = $factory->getNumOfCreateCalls('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
         $this->assertEquals(++$expected, $actual);
 
-        $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $factory->create('\de\detert\sebastian\slimline\Tests\Helper\Dummy', new Pool());
 
         $actual = $factory->getNumOfCreateCalls('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
         $this->assertEquals(++$expected, $actual);
@@ -145,12 +146,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(0, $factory->getNumOfCreateCalls('dummy'));
 
-        $dummy = new Dummy();
+        $dummy = new Dummy(new Pool());
         $factory->setMock('dummy', $dummy);
 
         $this->assertEquals(0, $factory->getNumOfCreateCalls('dummy'));
 
-        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy');
+        $mock   = $this->getMock('\de\detert\sebastian\slimline\Tests\Helper\Dummy', array(), array(new Pool()));
         $factory->setMock('mock', $mock);
 
         $this->assertEquals(0, $factory->getNumOfCreateCalls('mock'));

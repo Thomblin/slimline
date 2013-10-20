@@ -1,5 +1,6 @@
 <?php
 namespace de\detert\sebastian\slimline\Tests\Helper;
+use de\detert\sebastian\slimline\Controllable;
 
 /**
  * @author sebastian.detert <github@elygor.de>
@@ -7,7 +8,7 @@ namespace de\detert\sebastian\slimline\Tests\Helper;
  * @time 11:15
  * @license property of Sebastian Detert
  */
-class Dummy
+class Dummy extends Controllable
 {
     public $one;
     public $two;
@@ -18,24 +19,22 @@ class Dummy
      * @param mixed $two
      * @param mixed $three
      */
-    public function __construct($one = null, $two = null, $three = null)
+    public function set123($one = null, $two = null, $three = null)
     {
         $this->one = $one;
         $this->two = $two;
         $this->three = $three;
     }
 
-    public function doNothing(\de\detert\sebastian\slimline\Pool $pool)
+    public function doNothing()
     {
-        return $pool->factory->create('de\detert\sebastian\slimline\Response');
+        return $this->getPool()->factory->create('de\detert\sebastian\slimline\Response');
     }
 
     /**
-     * @param Request $request
-     * @param Response $response
      */
-    public function run(\de\detert\sebastian\slimline\Pool $pool)
+    public function run()
     {
-        return $pool->factory->create('de\detert\sebastian\slimline\Response');
+        return $this->getPool()->factory->create('de\detert\sebastian\slimline\Response');
     }
 }
