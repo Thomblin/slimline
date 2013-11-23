@@ -21,8 +21,15 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         // TODO read from general config file
         $this->dbConfig->dbName   = 'slimline_test';
-        $this->dbConfig->dsn      = 'mysql:dbname=slimline_test;host=127.0.0.1';
-        $this->dbConfig->user     = isset($_ENV["TRAVIS"]) ? 'travis' : 'slimline';
+
+        $this->dbConfig->dsn      = isset($_ENV["TRAVIS"])
+            ? 'mysql:dbname=myapp_test;host=127.0.0.1'
+            : 'mysql:dbname=slimline_test;host=127.0.0.1';
+
+        $this->dbConfig->user     = isset($_ENV["TRAVIS"])
+            ? 'travis'
+            : 'slimline';
+
         $this->dbConfig->password = '';
     }
 }

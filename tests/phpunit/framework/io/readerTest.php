@@ -38,7 +38,7 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
             'third' . DS . 'fourth.sql'
         );
 
-        $this->assertSame($expected, $files);
+        $this->assertEquals($expected, $files);
     }
     /**
      * @covers de\detert\sebastian\slimline\Io\Reader::__construct
@@ -59,6 +59,6 @@ class IoReaderTest extends \PHPUnit_Framework_TestCase
             __DIR__ . DS . 'misc' . DS . 'third' . DS . 'fourth.sql'
         );
 
-        $this->assertSame($expected, $files);
+        $this->assertEquals($expected, $files);
     }
 }
