@@ -27,8 +27,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if ( 'travis' === CI ) {
-            $this->preserveGlobalState(false);
-            $this->runTestInSeparateProcess();
+            $this->setPreserveGlobalState(false);
+            $this->setRunTestInSeparateProcess(true);
         }
     }
 
