@@ -6,6 +6,3 @@ php:
 
 before_script:
   - mysql -e 'create database slimline_test;'
-
-env:
-  - CI="TRAVIS"

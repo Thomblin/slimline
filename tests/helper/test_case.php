@@ -20,7 +20,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->dbConfig = new Config();
 
         // TODO read from general config file
-        if ( 'TRAVIS' === CI ) {
+        if ( 'travis' === CI ) {
             $this->dbConfig->dbName   = 'myapp_test';
             $this->dbConfig->dsn      = 'mysql:dbname=myapp_test;host=127.0.0.1';
             $this->dbConfig->user     = 'travis';
