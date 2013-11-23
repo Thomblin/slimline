@@ -1,6 +1,8 @@
 slimline
 ========
 
+[![Build Status](https://travis-ci.org/Thomblin/slimline.png?branch=master)](https://travis-ci.org/Thomblin/slimline)
+
 slimline shall be a small lightweight framework with 
 
 - as few features as needed to set up a web application
