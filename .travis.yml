@@ -8,4 +8,4 @@ before_script:
   - mysql -e 'create database slimline_test;'
 
 env:
-  - TRAVIS=1
+  - CI="TRAVIS"
