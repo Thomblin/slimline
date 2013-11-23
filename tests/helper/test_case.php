@@ -20,7 +20,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->dbConfig = new Config();
 
         // TODO read from general config file
-        $this->dbConfig->dbName   = 'slimline_test';
+        $this->dbConfig->dbName   = isset($_ENV["TRAVIS"])
+            ? 'myapp_test'
+            : 'slimline_test';
 
         $this->dbConfig->dsn      = isset($_ENV["TRAVIS"])
             ? 'mysql:dbname=myapp_test;host=127.0.0.1'
