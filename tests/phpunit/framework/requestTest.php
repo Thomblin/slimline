@@ -67,6 +67,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testThatSuperglobalsAreDeleted()
     {
+        $this->request->unsetSuperglobals();
         $this->assertEquals(array(), $_GET);
         $this->assertEquals(array(), $_POST);
         $this->assertEquals(array(), $_SERVER);
