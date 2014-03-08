@@ -24,6 +24,14 @@ class SessionTest extends \PHPUnit_Framework_TestCase
      */
     private $superglobals;
 
+    public function setUp()
+    {
+        if ( 'travis' === CI ) {
+            $this->setPreserveGlobalState(false);
+            $this->setRunTestInSeparateProcess(true);
+        }
+    }
+
     /**
      * @covers de\detert\sebastian\slimline\Session::validateSuperglobals
      * @covers de\detert\sebastian\slimline\Session::unsetSuperglobals
@@ -37,6 +45,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
         $session = new Session();
 
+        $session->unsetSuperglobals();
         $this->assertEquals(array(), $_SESSION);
 
         $filter = new Request_Filter();

@@ -31,7 +31,7 @@ class Handler
         assert_options (ASSERT_QUIET_EVAL, 1);
 
         // Set up the callback
-        assert_options (ASSERT_CALLBACK, array(__CLASS__, 'assertHandler'));
+        assert_options (ASSERT_CALLBACK, array($this, 'assertHandler'));
     }
 
     /**
@@ -51,7 +51,7 @@ class Handler
      */
     protected function setErrorHandling()
     {
-        set_error_handler(array(__CLASS__, 'errorHandler'), E_ALL);
+        set_error_handler(array($this, 'errorHandler'), E_ALL);
     }
 
     /**

@@ -25,7 +25,6 @@ class Request
     public function __construct()
     {
         $this->validateSuperglobals();
-        $this->unsetSuperglobals();
     }
 
     /**
@@ -54,7 +53,7 @@ class Request
     /**
      *
      */
-    protected function unsetSuperglobals()
+    public function unsetSuperglobals()
     {
         $_SERVER = array();
         $_POST = array();

@@ -22,7 +22,7 @@ class Session extends Request
     /**
      *
      */
-    protected function unsetSuperglobals()
+    public function unsetSuperglobals()
     {
         $_SESSION = array();
     }

@@ -42,7 +42,13 @@ class Db implements Handler
             array($this, "gc")
         );
 
-        session_start();
+        if ( ! isset($_SESSION) ) {
+            if ( headers_sent($file, $line) ) {
+                throw new \BadFunctionCallException("headers already sent @$file line $line");
+            } else {
+                session_start();
+            }
+        }
     }
 
     /**
