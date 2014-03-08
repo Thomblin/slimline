@@ -74,4 +74,10 @@ abstract class Render
             ? $this->translate->getTranslation($category, $text, $params)
             : $text;
     }
+
+    /**
+     * @param array $a
+     * @return string
+     */
+    public abstract function printTable(array $a);
 }

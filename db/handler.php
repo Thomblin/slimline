@@ -51,6 +51,7 @@ class Handler
     {
        if ( !is_null($this->debug) ) {
            $this->debug->start($sql, $params);
+           $this->debug->profile($this->db);
        }
     }
 
@@ -58,6 +59,8 @@ class Handler
     {
         if ( !is_null($this->debug) ) {
             $this->debug->stop();
+            $this->debug->stopProfile($this->db);
+            $this->debug->explain($this->db);
         }
     }
 

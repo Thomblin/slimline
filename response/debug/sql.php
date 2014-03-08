@@ -60,4 +60,31 @@ class Response_Debug_Sql extends Response
 
         return $debug;
     }
+
+    public function profile(\PDO $db)
+    {
+        $db->query('set @@profiling = 1');
+    }
+
+    public function stopProfile(\PDO $db)
+    {
+        try {
+            $this->debug[$this->last]['profile'] = $db->query('SHOW PROFILE')->fetchAll(\PDO::FETCH_ASSOC);
+            $db->query('set @@profiling = 0');
+        } catch(\Exception $e) {
+
+        }
+    }
+
+    public function explain(\PDO $db)
+    {
+        try {
+            $sth = $db->prepare('EXPLAIN ' . $this->debug[$this->last]['sql']);
+            $sth->execute($this->debug[$this->last]['params']);
+
+            $this->debug[$this->last]['explain'] = $sth->fetchAll(\PDO::FETCH_ASSOC);
+        } catch(\Exception $e) {
+
+        }
+    }
 }

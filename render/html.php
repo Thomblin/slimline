@@ -31,4 +31,20 @@ class Render_Html extends Render
 
         return "";
     }
+
+    /**
+     * @param array $a
+     * @return string
+     */
+    public function printTable(array $a)
+    {
+        $table  = '<table>';
+        $table .= '<tr><th>'.implode('</th><th>', array_keys($a[0])).'</th></tr>';
+
+        foreach($a as $row){
+            $table.= '<tr><td>'.implode('</td><td>', $row).'</td></tr>';
+        }
+
+        return $table . '</table>';
+    }
 }

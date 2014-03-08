@@ -18,4 +18,13 @@ class Render_Plain extends Render
     {
         return 'plain';
     }
+
+    /**
+     * @param array $a
+     * @return string
+     */
+    public function printTable(array $a)
+    {
+        return print_r($a, true);
+    }
 }
