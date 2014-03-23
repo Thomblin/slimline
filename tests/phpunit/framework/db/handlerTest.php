@@ -2,6 +2,7 @@
 namespace de\detert\sebastian\slimline\Tests;
 
 use de\detert\sebastian\slimline\db\Handler;
+use de\detert\sebastian\slimline\Response_Debug_Sql;
 use de\detert\sebastian\slimline\db\model\HandlerModel;
 
 require_once BASE_DIR . 'db' . DS . 'model.php';
@@ -206,5 +207,93 @@ class DbHandlerTest extends Helper\TestCase
             $actual,
             "expected\n" . print_r(array($model1, $model2), true) . "\actual\n" . print_r($actual, true)
         );
+    }
+
+    /**
+     * testShouldGetAffectedRows
+     *
+     * @param $debug
+     *
+     * @dataProvider getResponseDebugSql
+     * @covers de\detert\sebastian\slimline\db\Handler::getAffectedRows
+     */
+    public function testShouldGetAffectedRows(Response_Debug_Sql $debug = null)
+    {
+        $handler = new Handler($this->dbConfig);
+        if ( !is_null($debug) ) {
+            $handler->setDebugResponse($debug);
+        }
+
+        $sql = 'CREATE TABLE IF NOT EXISTS `foo` (`id` INT(20))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `foo` VALUES (?), (?)';
+        $params = array(1, 2);
+        $handler->query($sql, $params);
+
+        $this->assertEquals(2, $handler->getAffectedRows());
+    }
+
+    public function getResponseDebugSql()
+    {
+        return array(
+            array(new Response_Debug_Sql()),
+            array(null),
+        );
+    }
+
+    /**
+     * testShouldGetInsertId
+     *
+     * @param $debug
+     *
+     * @dataProvider getResponseDebugSql
+     * @covers de\detert\sebastian\slimline\db\Handler::getAffectedRows
+     */
+    public function testShouldGetInsertId(Response_Debug_Sql $debug = null)
+    {
+        $handler = new Handler($this->dbConfig);
+        if ( !is_null($debug) ) {
+            $handler->setDebugResponse($debug);
+        }
+
+        $sql = 'CREATE TABLE IF NOT EXISTS `foo` (`id` INT(20) AUTO_INCREMENT, PRIMARY KEY (`id`))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `foo` VALUES (NULL)';
+        $params = array();
+
+        $handler->query($sql, $params);
+        $this->assertEquals(1, $handler->getLastInsertId());
+
+        $handler->query($sql, $params);
+        $this->assertEquals(2, $handler->getLastInsertId());
+    }
+
+    /**
+     * testShouldGetFoundRows
+     *
+     * @param $debug
+     *
+     * @dataProvider getResponseDebugSql
+     * @covers de\detert\sebastian\slimline\db\Handler::getAffectedRows
+     */
+    public function testShouldGetFoundRows(Response_Debug_Sql $debug = null)
+    {
+        $handler = new Handler($this->dbConfig);
+        if ( !is_null($debug) ) {
+            $handler->setDebugResponse($debug);
+        }
+
+        $sql = 'CREATE TABLE IF NOT EXISTS `foo` (`id` INT(20))';
+        $this->handler->query($sql);
+
+        $sql = 'INSERT INTO `foo` VALUES (?), (?)';
+        $params = array(1, 2);
+        $handler->query($sql, $params);
+
+        $handler->query("SELECT SQL_CALC_FOUND_ROWS * FROM `foo` LIMIT 1");
+
+        $this->assertEquals(2, $handler->getFoundRows());
     }
 }

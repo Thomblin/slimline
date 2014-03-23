@@ -26,6 +26,8 @@ class Handler
     const ROW_INSERTED = 1;
     const ROW_UPDATED  = 2;
 
+    private $foundRows, $rowCount, $lastInsertId;
+
     /**
      * @param Config $config
      */
@@ -87,6 +89,8 @@ class Handler
             $this->startDebug($sql, $params);
             $statement = $this->db->prepare($sql);
             $statement->execute($params);
+
+            $this->cacheNonPermanentResults($sql);
             $this->stopDebug();
         } catch(\PDOException $e) {
             $this->stopDebug();
@@ -251,10 +255,43 @@ class Handler
         return $models;
     }
 
+    /**
+     * @param string $sql
+     */
+    private function cacheNonPermanentResults($sql)
+    {
+        if ( false !== stripos($sql, 'SQL_CALC_FOUND_ROWS') ) {
+            $this->foundRows = $this->fetchCurrent("SELECT FOUND_ROWS()");
+        } elseif ( preg_match('~(INSERT|UPDATE|DELETE|REPLACE)~i', $sql) ) {
+            $this->rowCount = $this->fetchCurrent("SELECT ROW_COUNT()");
+
+            if ( false !== stripos($sql, 'INSERT') ) {
+                $this->lastInsertId = $this->fetchCurrent("SELECT LAST_INSERT_ID()");
+            }
+        }
+    }
+
+    private function fetchCurrent($sql)
+    {
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+
+        $result             = $statement->fetch(\PDO::FETCH_ASSOC);
+        return current($result);
+    }
+
     public function getAffectedRows()
     {
-        $result = $this->fetch("SELECT ROW_COUNT()");
+        return $this->rowCount;
+    }
 
-        return current($result);
+    public function getFoundRows()
+    {
+        return $this->foundRows;
+    }
+
+    public function getLastInsertId()
+    {
+        return $this->lastInsertId;
     }
 }
