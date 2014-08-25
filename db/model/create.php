@@ -34,6 +34,10 @@ class Model_Create
         $templateDir = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
         $methodTemplate    = file_get_contents($templateDir . 'methods');
 
+        $strtoupper = function ($match) {
+            return strtoupper($match[1]);
+        };
+
         /** @var Model_Table $table */
         foreach ( $tables as $tableName => $table ) {
             $methods = array();
@@ -42,7 +46,7 @@ class Model_Create
             /** @var Model_Column $column */
             foreach ( $table->columns as $name => $column ) {
 
-                $ucColumn = ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $name ) ) );
+                $ucColumn = ucfirst( preg_replace_callback( '/_(.?)/', $strtoupper, strtolower( $name ) ) );
 
                 $method = $methodTemplate;
                 $method = str_replace('%type%', $column->data_type, $method);
@@ -54,7 +58,7 @@ class Model_Create
                 $columns[] = "'" . $name . "', // " . $column->getDescription();
             }
 
-            $className = ucfirst( preg_replace( '/(_.?)/e', "strtoupper('$1')", strtolower( $tableName ) ) );
+            $className = ucfirst( preg_replace_callback( '/(_.?)/', $strtoupper, strtolower( $tableName ) ) );
 
             $generatedTemplate = file_get_contents($templateDir . 'generated');
             $generatedTemplate = str_replace('%name%', $className, $generatedTemplate);

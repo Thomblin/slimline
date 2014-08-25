@@ -24,6 +24,27 @@ class SessionTest extends \PHPUnit_Framework_TestCase
      */
     private $superglobals;
 
+    /**
+     * we need process isolation to prevent "headers already sent"
+     *
+     * but process isolation triggers another error, because phpunit tries to load all previously included files
+     * where throw_exception.php should not be called
+     *
+     * however disabled globalState prevents constants in bootstrap.php to be loaded
+     *
+     * that is why we need this ugly hack method
+     *
+     * @param \Text_Template $template
+     */
+    protected function prepareTemplate(\Text_Template $template) {
+        $template->setVar(array(
+            'iniSettings' => '',
+            'constants' => '',
+            'included_files' => '',
+            'globals' => '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . var_export($GLOBALS['__PHPUNIT_BOOTSTRAP'], TRUE) . ";\n",
+        ));
+    }
+
     public function setUp()
     {
         if ( 'travis' === CI ) {
@@ -37,6 +58,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase
      * @covers de\detert\sebastian\slimline\Session::unsetSuperglobals
      * @covers de\detert\sebastian\slimline\Session::set
      * @covers de\detert\sebastian\slimline\Session::__destruct
+     *
+     * @runInSeparateProcess
      */
     public function testShouldSetAndGetSession()
     {

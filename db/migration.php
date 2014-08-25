@@ -83,12 +83,16 @@ class Migration
     {
         $versions = array();
 
+        $strtoupper = function ($match) {
+            return strtoupper($match[1]);
+        };
+
         foreach ($files as $filePath) {
             if (preg_match('/(([0-9]+)_([a-z0-9_]*)).php$/i', basename($filePath), $match)) {
                 $fileName = $match[1];
 
                 $className  = 'de\\detert\\sebastian\\slimline\db\\';
-                $className .= ucfirst( preg_replace( '/_(.?)/e', "strtoupper('$1')", strtolower( $match[3] ) ) );
+                $className .= ucfirst( preg_replace_callback( '/_(.?)/', $strtoupper, strtolower( $match[3] ) ) );
                 $className .= $match[2];
 
                 require_once $filePath;

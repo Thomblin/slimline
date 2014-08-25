@@ -26,6 +26,27 @@ class SessionDbTest extends Helper\TestCase
     private $handler;
 
     /**
+     * we need process isolation to prevent "headers already sent"
+     *
+     * but process isolation triggers another error, because phpunit tries to load all previously included files
+     * where throw_exception.php should not be called
+     *
+     * however disabled globalState prevents constants in bootstrap.php to be loaded
+     *
+     * that is why we need this ugly hack method
+     *
+     * @param \Text_Template $template
+     */
+    protected function prepareTemplate(\Text_Template $template) {
+        $template->setVar(array(
+            'iniSettings' => '',
+            'constants' => '',
+            'included_files' => '',
+            'globals' => '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . var_export($GLOBALS['__PHPUNIT_BOOTSTRAP'], TRUE) . ";\n",
+        ));
+    }
+
+    /**
      * @covers de\detert\sebastian\slimline\db\Handler::__construct
      */
     public function setUp()
@@ -46,6 +67,8 @@ class SessionDbTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\session\Db::startSession
      * @covers de\detert\sebastian\slimline\session\Db::write
      * @covers de\detert\sebastian\slimline\session\Db::close
+     *
+     * @runInSeparateProcess
      */
     public function testShouldWriteAndStoreSession()
     {
@@ -76,6 +99,8 @@ class SessionDbTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\session\Db::open
      * @covers de\detert\sebastian\slimline\session\Db::read
      * @covers de\detert\sebastian\slimline\session\Db::destroy
+     *
+     * @runInSeparateProcess
      */
     public function testShouldLoadAndDestroySession()
     {
@@ -102,6 +127,8 @@ class SessionDbTest extends Helper\TestCase
 
     /**
      * @covers de\detert\sebastian\slimline\session\Db::gc
+     *
+     * @runInSeparateProcess
      */
     public function testShouldDestroySession()
     {
