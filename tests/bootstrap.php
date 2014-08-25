@@ -8,7 +8,6 @@ defined('BASE_DIR') || define('BASE_DIR', realpath(__DIR__ . DS . '..') . DS );
 
 defined('CI') || define('CI', getenv("TRAVIS") ? 'travis' : 'local');
 
-require_once 'PHPUnit/Autoload.php';
 require_once __DIR__ . DS . 'helper' . DS . 'test_case.php';
 
 require_once BASE_DIR . 'controller.php';
