@@ -11,4 +11,4 @@ defined('CI') || define('CI', getenv("TRAVIS") ? 'travis' : 'local');
 require_once __DIR__ . DS . 'helper' . DS . 'test_case.php';
 
 require_once BASE_DIR . 'controller.php';
-$controller = new Controller(new Config(realpath(BASE_DIR)), new Factory());
+new Controller(new Config(realpath(BASE_DIR)), new Factory());
