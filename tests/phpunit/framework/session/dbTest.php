@@ -51,10 +51,6 @@ class SessionDbTest extends Helper\TestCase
      */
     public function setUp()
     {
-        if ( 'travis' === CI ) {
-            $this->setPreserveGlobalState(false);
-            $this->setRunTestInSeparateProcess(true);
-        }
         $this->handler = new Handler($this->dbConfig);
 
         $sql = 'DROP TABLE IF EXISTS `session`';

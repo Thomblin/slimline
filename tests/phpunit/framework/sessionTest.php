@@ -45,14 +45,6 @@ class SessionTest extends \PHPUnit_Framework_TestCase
         ));
     }
 
-    public function setUp()
-    {
-        if ( 'travis' === CI ) {
-            $this->setPreserveGlobalState(false);
-            $this->setRunTestInSeparateProcess(true);
-        }
-    }
-
     /**
      * @covers de\detert\sebastian\slimline\Session::validateSuperglobals
      * @covers de\detert\sebastian\slimline\Session::unsetSuperglobals
