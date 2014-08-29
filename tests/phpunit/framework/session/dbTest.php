@@ -21,11 +21,6 @@ require_once BASE_DIR . 'session' . DS . 'db.php';
 class SessionDbTest extends Helper\TestCase
 {
     /**
-     * @var Handler
-     */
-    private $handler;
-
-    /**
      * we need process isolation to prevent "headers already sent"
      *
      * but process isolation triggers another error, because phpunit tries to load all previously included files
@@ -47,17 +42,6 @@ class SessionDbTest extends Helper\TestCase
     }
 
     /**
-     * @covers de\detert\sebastian\slimline\db\Handler::__construct
-     */
-    public function setUp()
-    {
-        $this->handler = new Handler($this->dbConfig);
-
-        $sql = 'DROP TABLE IF EXISTS `session`';
-        $this->handler->query($sql);
-    }
-
-    /**
      * @covers de\detert\sebastian\slimline\session\Db::__construct
      * @covers de\detert\sebastian\slimline\session\Db::createTable
      * @covers de\detert\sebastian\slimline\session\Db::startSession
@@ -71,8 +55,13 @@ class SessionDbTest extends Helper\TestCase
      */
     public function testShouldWriteAndStoreSession()
     {
+        $handler = new Handler($this->dbConfig);
+
+        $sql = 'DROP TABLE IF EXISTS `session`';
+        $handler->query($sql);
+        
         session_id(123);
-        $session = new Db($this->handler);
+        $session = new Db($handler);
         $session->createTable();
         $session->startSession();
 
@@ -82,7 +71,7 @@ class SessionDbTest extends Helper\TestCase
         session_write_close();
 
         $sql = "SELECT * FROM `session` WHERE `id`=?";
-        $actual = $this->handler->fetchAll($sql, array(123));
+        $actual = $handler->fetchAll($sql, array(123));
 
         $maxDate = date('Y-m-d H:i:s');
 
@@ -106,14 +95,19 @@ class SessionDbTest extends Helper\TestCase
      */
     public function testShouldLoadAndDestroySession()
     {
+        $handler = new Handler($this->dbConfig);
+
+        $sql = 'DROP TABLE IF EXISTS `session`';
+        $handler->query($sql);
+        
         session_id(124);
-        $session = new Db($this->handler);
+        $session = new Db($handler);
         $session->createTable();
 
         $sql = "INSERT INTO `session`
             (`id`, `created`, `updated`, `value`) VALUES
             (:id, NOW(), NOW(), :value)";
-        $this->handler->query($sql, array('id' => 124, 'value' => 'unit_test|s:3:"abc";'));
+        $handler->query($sql, array('id' => 124, 'value' => 'unit_test|s:3:"abc";'));
 
         $session->startSession();
 
@@ -122,7 +116,7 @@ class SessionDbTest extends Helper\TestCase
         session_destroy();
 
         $sql    = "SELECT * FROM `session` WHERE `id`=?";
-        $actual = $this->handler->fetchAll($sql, array(124));
+        $actual = $handler->fetchAll($sql, array(124));
 
         $this->assertEquals(array(), $actual);
     }
@@ -134,8 +128,13 @@ class SessionDbTest extends Helper\TestCase
      */
     public function testShouldDestroySession()
     {
+        $handler = new Handler($this->dbConfig);
+
+        $sql = 'DROP TABLE IF EXISTS `session`';
+        $handler->query($sql);
+        
         session_id(125);
-        $session = new Db($this->handler);
+        $session = new Db($handler);
         $session->createTable();
 
         $now  = time() - 10;
@@ -144,14 +143,14 @@ class SessionDbTest extends Helper\TestCase
         $sql = "INSERT INTO `session`
             (`id`, `created`, `updated`, `value`) VALUES
             (:id, :date, :date, :value)";
-        $this->handler->query($sql, array('id' => 125, 'value' => 'unit_test|s:3:"abc";', 'date' => $date));
+        $handler->query($sql, array('id' => 125, 'value' => 'unit_test|s:3:"abc";', 'date' => $date));
 
         $session->startSession();
 
         $session->gc(20);
 
         $sql    = "SELECT * FROM `session` WHERE `id`=?";
-        $actual = $this->handler->fetchAll($sql, array(125));
+        $actual = $handler->fetchAll($sql, array(125));
 
         $this->assertEquals(125, $actual[0]['id']);
         $this->assertEquals('unit_test|s:3:"abc";', $actual[0]['value']);
@@ -159,7 +158,7 @@ class SessionDbTest extends Helper\TestCase
         $session->gc(9);
 
         $sql    = "SELECT * FROM `session` WHERE `id`=?";
-        $actual = $this->handler->fetchAll($sql, array(125));
+        $actual = $handler->fetchAll($sql, array(125));
 
         $this->assertEquals(array(), $actual);
     }
