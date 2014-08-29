@@ -65,6 +65,9 @@ class SessionDbTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\session\Db::close
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @backupGlobals disabled
+     * @backupStaticAttributes disabled
      */
     public function testShouldWriteAndStoreSession()
     {
@@ -97,6 +100,9 @@ class SessionDbTest extends Helper\TestCase
      * @covers de\detert\sebastian\slimline\session\Db::destroy
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @backupGlobals disabled
+     * @backupStaticAttributes disabled
      */
     public function testShouldLoadAndDestroySession()
     {
