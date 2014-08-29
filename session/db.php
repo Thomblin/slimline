@@ -93,8 +93,8 @@ class Db implements Handler
      */
     public function gc($maxLifetime)
     {
-        $sql = "DELETE FROM `".$this->table."` WHERE `updated` < DATE_SUB(NOW(), INTERVAL ? SECOND)";
-        $this->db->query($sql, array($maxLifetime));
+        $sql = "DELETE FROM `".$this->table."` WHERE `updated` < DATE_SUB(?, INTERVAL ? SECOND)";
+        $this->db->query($sql, array(date('Y-m-d H:i:s'), $maxLifetime));
 
         return true;
     }
@@ -133,9 +133,9 @@ class Db implements Handler
     {
         $sql   = "INSERT INTO `".$this->table."`
             (`id`, `created`, `updated`, `value`) VALUES
-            (:id, NOW(), NOW(), :value)
-            ON DUPLICATE KEY UPDATE `value`=:value, `updated`=NOW()";
-        $this->db->query($sql, array('id' => $sessionId, 'value' => $sessionData));
+            (:id, :now, :now, :value)
+            ON DUPLICATE KEY UPDATE `value`=:value, `updated`=:now";
+        $this->db->query($sql, array(':id' => $sessionId, ':value' => $sessionData, ':now' => date('Y-m-d H:i:s')));
 
         return true;
     }
